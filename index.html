@@ -7,10 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: #2c3e50;
-      --accent: #e67e22;
-      --bg: #f9f9f9;
-      --text: #333;
+      --primary: #003366;
+      --accent: #0077cc;
+      --bg: #ffffff;
+      --text: #111111;
     }
 
     * {
@@ -57,39 +57,22 @@
       margin-bottom: 2rem;
     }
 
-    .logos img {
-      max-width: 150px;
-      margin: 0.5rem;
+    .photo {
+      text-align: center;
+      margin-top: 1rem;
     }
 
-    .comics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    .comics-grid img {
-      width: 100%;
-      height: auto;
-      border: 2px solid #ddd;
+    .photo img {
+      max-width: 300px;
       border-radius: 8px;
+      border: 2px solid #ccc;
     }
 
-    form input, form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    form button {
-      background: var(--accent);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+    .centered {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #555;
+      padding: 2rem 0;
     }
 
     @media (max-width: 600px) {
@@ -114,34 +97,26 @@
 
   <div class="container">
     <section id="home" class="section">
-      <h2>About the Artist</h2>
-      <p>Your cousin’s bio goes here. This is where you tell his story—how he fell in love with art, what inspires him, and how he keeps creating from behind bars.</p>
-      <div class="logos">
-        <!-- Drop logo images here -->
-        <img src="logo1.png" alt="Logo 1">
-        <img src="logo2.png" alt="Logo 2">
+      <h2>About Vinnie</h2>
+      <p>Vinnie is an artist with a powerful voice and vision, currently incarcerated but still deeply passionate about storytelling through art and comics. He’s sharing his work here as a window into his creativity, spirit, and resilience.</p>
+      <div class="photo">
+        <!-- Vinnie's photo placeholder -->
+        <img src="vinnie-photo.jpg" alt="Photo of Vinnie">
       </div>
     </section>
 
     <section id="comics" class="section">
       <h2>Comics</h2>
-      <div class="comics-grid">
-        <!-- Add comic strip images here -->
-        <img src="comic1.jpg" alt="Comic 1">
-        <img src="comic2.jpg" alt="Comic 2">
-        <img src="comic3.jpg" alt="Comic 3">
+      <div class="centered">
+        <p>Coming soon...</p>
       </div>
     </section>
 
     <section id="contact" class="section">
       <h2>Contact</h2>
-      <p>If you'd like to reach out or support, leave a message below:</p>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
+      <div class="centered">
+        <p>(Contact info coming soon)</p>
+      </div>
     </section>
   </div>
 </body>
