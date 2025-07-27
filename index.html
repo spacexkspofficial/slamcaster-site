@@ -28,6 +28,10 @@
       padding: 2rem;
       text-align: center;
     }
+    header img {
+      max-width: 100%;
+      height: auto;
+    }
     nav {
       background: var(--accent);
       display: flex;
@@ -45,21 +49,43 @@
       margin: 2rem auto;
       padding: 0 1rem;
     }
+    .bio-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .bio-text {
+      flex: 1 1 300px;
+    }
+    .bio-logo {
+      flex: 1 1 200px;
+      text-align: center;
+    }
+    .bio-logo img {
+      max-width: 100%;
+      height: auto;
+    }
     .photo {
       text-align: center;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
     .photo img {
       max-width: 300px;
       border-radius: 8px;
       border: 2px solid #ccc;
     }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #888;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Slamcaster</h1>
-    <p>Art & Comics by a Voice Behind Bars</p>
+    <img src="Sc-logo1-1.png" alt="Slamcaster Logo" />
   </header>
 
   <nav>
@@ -70,12 +96,20 @@
 
   <div class="container">
     <h2>About Vinnie</h2><br>
-    <p>Vinnie Amadeo was born and raised in Iowa, where his early love for drawing and storytelling first took root. Now incarcerated at California State Prison, Los Angeles County, Vinnie continues to create, using comics as his primary medium of expression. His work offers an unfiltered glimpse into life behind bars—capturing the emotional, social, and human complexities of incarceration with striking honesty and artistic depth. Through bold illustrations and raw narratives, Vinnie invites readers to see prison not just as a place, but as a lived experience shaped by struggle, resilience, and hope. His comics are deeply personal yet universally resonant, reflecting a voice that refuses to be silenced. Slamcaster serves as a platform for Vinnie to share that voice, one panel at a time, with the outside world.</p>
+    <div class="bio-section">
+      <div class="bio-text">
+        <p>Vinnie Amadeo was born and raised in Iowa, where his early love for drawing and storytelling first took root. Now incarcerated at California State Prison, Los Angeles County, Vinnie continues to create, using comics as his primary medium of expression. His work offers an unfiltered glimpse into life behind bars—capturing the emotional, social, and human complexities of incarceration with striking honesty and artistic depth. Through bold illustrations and raw narratives, Vinnie invites readers to see prison not just as a place, but as a lived experience shaped by struggle, resilience, and hope. His comics are deeply personal yet universally resonant, reflecting a voice that refuses to be silenced. Slamcaster serves as a platform for Vinnie to share that voice, one panel at a time, with the outside world.</p>
+      </div>
+      <div class="bio-logo">
+        <img src="Sc-logo2-1.png" alt="Slamcaster Logo 2" />
+      </div>
+    </div>
     <div class="photo">
       <img src="vinnie-photo.jpg" alt="Photo of Vinnie" />
     </div>
   </div>
-  <footer style="background:#f4f4f4; text-align:center; padding:1rem; font-size:0.9rem; color:#333; margin-top:3rem;">
+
+  <footer>
     &copy; 2025 Vinnie Amadeo
   </footer>
 </body>
