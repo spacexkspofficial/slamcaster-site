@@ -1,116 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slamcaster</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary: #002244;
-      --accent: #0077cc;
-      --bg: #ffffff;
-      --text: #111111;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-    }
-    header {
-      background: var(--primary);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    header img {
-      max-width: 100%;
-      height: auto;
-    }
-    nav {
-      background: var(--accent);
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .bio-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: center;
-    }
-    .bio-text {
-      flex: 1 1 300px;
-    }
-    .bio-logo {
-      flex: 1 1 200px;
-      text-align: center;
-    }
-    .bio-logo img {
-      max-width: 100%;
-      height: auto;
-    }
-    .photo {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .photo img {
-      max-width: 300px;
-      border-radius: 8px;
-      border: 2px solid #ccc;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #888;
-      font-size: 0.9rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Slamcaster</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        header {
+            background-color: #003366;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header img {
+            max-height: 80px;
+        }
+
+        .tagline {
+            color: #ffffff;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        nav {
+            background-color: #007BFF;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #003366;
+        }
+
+        .bio {
+            margin-bottom: 30px;
+        }
+
+        .photo {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .photo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #003366;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="Sc-logo1-1.png" alt="Slamcaster Logo" />
-  </header>
+    <header>
+        <img src="Sc-logo1-1.png" alt="Slamcaster Logo">
+        <div class="tagline">Art & Comics by a Voice Behind Bars</div>
+    </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="comics.html">Comics</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="comics.html">Comics</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
-  <div class="container">
-    <h2>About Vinnie</h2><br>
-    <div class="bio-section">
-      <div class="bio-text">
-        <p>Vinnie Amadeo was born and raised in Iowa, where his early love for drawing and storytelling first took root. Now incarcerated at California State Prison, Los Angeles County, Vinnie continues to create, using comics as his primary medium of expression. His work offers an unfiltered glimpse into life behind bars—capturing the emotional, social, and human complexities of incarceration with striking honesty and artistic depth. Through bold illustrations and raw narratives, Vinnie invites readers to see prison not just as a place, but as a lived experience shaped by struggle, resilience, and hope. His comics are deeply personal yet universally resonant, reflecting a voice that refuses to be silenced. Slamcaster serves as a platform for Vinnie to share that voice, one panel at a time, with the outside world.</p>
-      </div>
-      <div class="bio-logo">
-        <img src="Sc-logo2-1.png" alt="Slamcaster Logo 2" />
-      </div>
-    </div>
-    <div class="photo">
-      <img src="vinnie-photo.jpg" alt="Photo of Vinnie" />
-    </div>
-  </div>
+    <main>
+        <h2>About Vinnie</h2>
+        <p class="bio">
+            Vinnie Amadeo was born and raised in Iowa, where his early love for drawing and storytelling first took root.
+            Now incarcerated at California State Prison, Los Angeles County, Vinnie continues to create, using comics as
+            his primary medium of expression. His work offers an unfiltered glimpse into life behind bars—capturing the
+            emotional, social, and human complexities of incarceration with striking honesty and artistic depth. Through
+            bold illustrations and raw narratives, Vinnie invites readers to see prison not just as a place, but as a
+            lived experience shaped by struggle, resilience, and hope. His comics are deeply personal yet universally
+            resonant, reflecting a voice that refuses to be silenced. Slamcaster serves as a platform for Vinnie to
+            share that voice, one panel at a time, with the outside world.
+        </p>
+        <div class="photo">
+            <img src="Sc-logo2-1.png" alt="Photo of Vinnie">
+        </div>
+    </main>
 
-  <footer>
-    &copy; 2025 Vinnie Amadeo
-  </footer>
+    <footer>
+        &copy; 2025 Vinnie Amadeo
+    </footer>
 </body>
 </html>
