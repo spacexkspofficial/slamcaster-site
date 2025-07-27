@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,102 +9,129 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #000000;
+      background-color: white;
+      color: #000;
     }
+
     header {
       background-color: #002f6c;
-      padding: 10px 0 0 0;
+      padding: 1rem 0 0.5rem;
       text-align: center;
     }
+
     header img {
-      width: 90%;
-      max-width: 400px;
+      max-width: 90%;
       height: auto;
+      display: block;
+      margin: 0 auto 0.5rem;
     }
+
     .tagline {
-      color: white;
-      font-size: 18px;
-      margin-top: 5px;
+      color: #fff;
+      margin: 0.5rem 0 0;
+      font-weight: 500;
     }
+
     nav {
       background-color: #0074e8;
-      padding: 10px 0;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.75rem 0;
     }
+
     nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      margin: 0 15px;
       font-weight: bold;
     }
-    .about-section {
+
+    .content {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
-      padding: 30px 20px;
-      max-width: 1000px;
-      margin: auto;
+      gap: 2rem;
+      padding: 2rem;
     }
-    .bio-content {
+
+    .bio-section {
       flex: 1 1 300px;
-      padding: 10px;
+      max-width: 600px;
     }
-    .bio-content h2 {
+
+    .bio-section h2 {
       margin-top: 0;
     }
-    .bio-text {
-      margin-top: 10px;
+
+    .bio-section p {
+      line-height: 1.5;
     }
+
     .logo2 {
-      flex: 0 0 300px;
+      flex: 0 1 300px;
       max-width: 300px;
-      padding: 10px;
     }
+
+    .logo2 img {
+      width: 100%;
+      height: auto;
+    }
+
     .vinnie-photo {
       max-width: 300px;
-      width: 100%;
-      margin: 0 auto;
-      display: block;
-      padding: 20px 0;
+      margin-top: 1rem;
     }
+
+    footer {
+      background-color: #002f6c;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
     @media (max-width: 768px) {
-      .about-section {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .content {
         flex-direction: column;
         align-items: center;
-      }
-      .logo2 {
-        order: 2;
-      }
-      .vinnie-photo {
-        margin-top: 20px;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
     <img src="Sc-logo1-1.png" alt="Slamcaster Logo" />
-    <div class="tagline">Art & Comics by a Voice Behind Bars</div>
+    <p class="tagline">Art & Comics by a Voice Behind Bars</p>
   </header>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="comics.html">Comics</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <section class="about-section">
-    <div class="bio-content">
+  <main class="content">
+    <div class="bio-section">
       <h2>About Vinnie</h2>
-      <p class="bio-text">
+      <p>
         Vinnie Amadeo was born and raised in Iowa, where his early love for drawing and storytelling first took root. Now incarcerated at California State Prison, Los Angeles County, Vinnie continues to create, using comics as his primary medium of expression. His work offers an unfiltered glimpse into life behind bars—capturing the emotional, social, and human complexities of incarceration with striking honesty and artistic depth. Through bold illustrations and raw narratives, Vinnie invites readers to see prison not just as a place, but as a lived experience shaped by struggle, resilience, and hope. His comics are deeply personal yet universally resonant, reflecting a voice that refuses to be silenced. Slamcaster serves as a platform for Vinnie to share that voice, one panel at a time, with the outside world.
       </p>
       <img class="vinnie-photo" src="64225c99-6b41-4ccb-be96-b0e6ecd6ef9e.png" alt="Photo of Vinnie" />
     </div>
     <div class="logo2">
-      <img src="Sc-logo2-1.png" alt="Slamcaster Illustration" style="width: 100%; height: auto;" />
+      <img src="Sc-logo2-1.png" alt="Slamcaster Art Logo" />
     </div>
-  </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Slamcaster. All rights reserved.
+  </footer>
 </body>
+
 </html>
