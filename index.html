@@ -1,142 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slamcaster</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        header {
-            background-color: #002b5c;
-            color: white;
-            text-align: center;
-            padding: 10px 0 0 0;
-        }
-
-        header img {
-            max-height: 120px;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            margin: 5px 0 10px;
-            font-size: 1.2em;
-        }
-
-        nav {
-            background-color: #0073e6;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: bold;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .about-section {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            justify-content: space-between;
-        }
-
-        .bio {
-            flex: 1 1 300px;
-            margin-right: 30px;
-        }
-
-        .bio p {
-            margin-top: 5px;
-        }
-
-        .logo2 {
-            max-width: 350px;
-            flex: 0 1 auto;
-        }
-
-        .bio-image {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 20px;
-        }
-
-        .bio-image img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #f1f1f1;
-            font-size: 0.9em;
-        }
-
-        @media (max-width: 768px) {
-            .about-section {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .bio {
-                margin-right: 0;
-            }
-
-            .logo2 {
-                margin-top: 20px;
-            }
-
-            .bio-image {
-                justify-content: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slamcaster</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    header {
+      background-color: #002f6c;
+      padding: 10px 0 0 0;
+      text-align: center;
+    }
+    header img {
+      width: 90%;
+      max-width: 400px;
+      height: auto;
+    }
+    .tagline {
+      color: white;
+      font-size: 18px;
+      margin-top: 5px;
+    }
+    nav {
+      background-color: #0074e8;
+      padding: 10px 0;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .bio-content {
+      flex: 1 1 300px;
+      padding: 10px;
+    }
+    .bio-content h2 {
+      margin-top: 0;
+    }
+    .bio-text {
+      margin-top: 10px;
+    }
+    .logo2 {
+      flex: 0 0 300px;
+      max-width: 300px;
+      padding: 10px;
+    }
+    .vinnie-photo {
+      max-width: 300px;
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+      padding: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .about-section {
+        flex-direction: column;
+        align-items: center;
+      }
+      .logo2 {
+        order: 2;
+      }
+      .vinnie-photo {
+        margin-top: 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <img src="Sc-logo1-1.png" alt="Slamcaster Logo">
-        <p>Art & Comics by a Voice Behind Bars</p>
-    </header>
+  <header>
+    <img src="Sc-logo1-1.png" alt="Slamcaster Logo" />
+    <div class="tagline">Art & Comics by a Voice Behind Bars</div>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="comics.html">Comics</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="comics.html">Comics</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-    <div class="container">
-        <h2>About Vinnie</h2>
-        <div class="about-section">
-            <div class="bio">
-                <p>Vinnie Amadeo was born and raised in Iowa, where his early love for drawing and storytelling first took root. Now incarcerated at California State Prison, Los Angeles County, Vinnie continues to create, using comics as his primary medium of expression. His work offers an unfiltered glimpse into life behind bars—capturing the emotional, social, and human complexities of incarceration with striking honesty and artistic depth. Through bold illustrations and raw narratives, Vinnie invites readers to see prison not just as a place, but as a lived experience shaped by struggle, resilience, and hope. His comics are deeply personal yet universally resonant, reflecting a voice that refuses to be silenced. Slamcaster serves as a platform for Vinnie to share that voice, one panel at a time, with the outside world.</p>
-                <div class="bio-image">
-                    <img src="64225c99-6b41-4ccb-be96-b0e6ecd6ef9e.png" alt="Photo of Vinnie">
-                </div>
-            </div>
-            <img class="logo2" src="Sc-logo2-1.png" alt="Logo 2">
-        </div>
+  <section class="about-section">
+    <div class="bio-content">
+      <h2>About Vinnie</h2>
+      <p class="bio-text">
+        Vinnie Amadeo was born and raised in Iowa, where his early love for drawing and storytelling first took root. Now incarcerated at California State Prison, Los Angeles County, Vinnie continues to create, using comics as his primary medium of expression. His work offers an unfiltered glimpse into life behind bars—capturing the emotional, social, and human complexities of incarceration with striking honesty and artistic depth. Through bold illustrations and raw narratives, Vinnie invites readers to see prison not just as a place, but as a lived experience shaped by struggle, resilience, and hope. His comics are deeply personal yet universally resonant, reflecting a voice that refuses to be silenced. Slamcaster serves as a platform for Vinnie to share that voice, one panel at a time, with the outside world.
+      </p>
+      <img class="vinnie-photo" src="64225c99-6b41-4ccb-be96-b0e6ecd6ef9e.png" alt="Photo of Vinnie" />
     </div>
-
-    <footer>
-        &copy; 2025 Vinnie Amadeo
-    </footer>
+    <div class="logo2">
+      <img src="Sc-logo2-1.png" alt="Slamcaster Illustration" style="width: 100%; height: auto;" />
+    </div>
+  </section>
 </body>
-
 </html>
