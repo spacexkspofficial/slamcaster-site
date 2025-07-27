@@ -1,57 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Comics | Slamcaster</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Comics - Slamcaster</title>
   <style>
-    :root {
-      --primary: #002244;
-      --accent: #0077cc;
-      --bg: #ffffff;
-      --text: #111111;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-    }
     body {
-      background: var(--bg);
-      color: var(--text);
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: #000;
     }
+
     header {
-      background: var(--primary);
-      color: white;
-      padding: 2rem;
+      background-color: #002f6c;
+      padding: 1rem 0 0.5rem;
       text-align: center;
     }
+
+    header img {
+      max-width: 90%;
+      height: auto;
+      display: block;
+      margin: 0 auto 0.5rem;
+    }
+
+    .tagline {
+      color: #fff;
+      margin: 0.5rem 0 0;
+      font-weight: 500;
+    }
+
     nav {
-      background: var(--accent);
+      background-color: #0074e8;
       display: flex;
       justify-content: center;
       gap: 2rem;
+      padding: 0.75rem 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #002f6c;
+      color: white;
+      text-align: center;
       padding: 1rem;
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      text-align: center;
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>Slamcaster</h1>
-    <p>Art & Comics by a Voice Behind Bars</p>
+    <img src="Sc-logo1-1.png" alt="Slamcaster Logo" />
+    <p class="tagline">Art & Comics by a Voice Behind Bars</p>
   </header>
 
   <nav>
@@ -60,12 +81,14 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <div class="container">
+  <main class="content">
     <h2>Comics</h2>
-    <p>Coming soon...</p>
-  </div>
-  <footer style="background:#f4f4f4; text-align:center; padding:1rem; font-size:0.9rem; color:#333; margin-top:3rem;">
-    &copy; 2025 Vinnie Amadeo
+    <p>Coming soon. Vinnie's original comics will be uploaded here.</p>
+  </main>
+
+  <footer>
+    &copy; 2025 Slamcaster. All rights reserved.
   </footer>
 </body>
+
 </html>
