@@ -1,66 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Slamcaster</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Contact - Slamcaster</title>
   <style>
-    :root {
-      --primary: #002244;
-      --accent: #0077cc;
-      --bg: #ffffff;
-      --text: #111111;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-    }
     body {
-      background: var(--bg);
-      color: var(--text);
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: #000;
     }
+
     header {
-      background: var(--primary);
-      color: white;
-      padding: 2rem;
+      background-color: #002f6c;
+      padding: 1rem 0 0.5rem;
       text-align: center;
     }
+
+    header img {
+      max-width: 90%;
+      height: auto;
+      display: block;
+      margin: 0 auto 0.5rem;
+    }
+
+    .tagline {
+      color: #fff;
+      margin: 0.5rem 0 0;
+      font-weight: 500;
+    }
+
     nav {
-      background: var(--accent);
+      background-color: #0074e8;
       display: flex;
       justify-content: center;
       gap: 2rem;
-      padding: 1rem;
+      padding: 0.75rem 0;
     }
+
     nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: bold;
     }
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+
+    .content {
+      padding: 2rem;
+      text-align: center;
     }
-    .contact-info {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-    .mail-block {
-      background: #f2f2f2;
+
+    footer {
+      background-color: #002f6c;
+      color: white;
+      text-align: center;
       padding: 1rem;
-      border-left: 4px solid var(--accent);
-      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>Slamcaster</h1>
-    <p>Art & Comics by a Voice Behind Bars</p>
+    <img src="Sc-logo1-1.png" alt="Slamcaster Logo" />
+    <p class="tagline">Art & Comics by a Voice Behind Bars</p>
   </header>
 
   <nav>
@@ -69,21 +81,14 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <div class="container">
-    <h2>Contact</h2><br>
-    <div class="contact-info">
-      <p><strong>Email:</strong> <a href="mailto:contact@slamcaster.com">contact@slamcaster.com</a></p>
-      <div class="mail-block">
-        <strong>Mail To:</strong><br>
-        Vinnie Amadeo #K67769<br>
-        CSP - LAC C1-204<br>
-        P.O. Box 4610<br>
-        Lancaster, CA 93539
-      </div>
-    </div>
-  </div>
-  <footer style="background:#f4f4f4; text-align:center; padding:1rem; font-size:0.9rem; color:#333; margin-top:3rem;">
-    &copy; 2025 Vinnie Amadeo
+  <main class="content">
+    <h2>Contact</h2>
+    <p>For inquiries or messages for Vinnie, please email: <strong>contact@slamcaster.com</strong></p>
+  </main>
+
+  <footer>
+    &copy; 2025 Slamcaster. All rights reserved.
   </footer>
 </body>
+
 </html>
