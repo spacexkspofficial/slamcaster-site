@@ -52,23 +52,22 @@
       text-align: center;
     }
 
-    .comic-entry {
+    .comic-wrapper {
       margin: 2rem auto;
-      max-width: 800px;
-      border: 2px solid #002f6c;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+      text-align: center;
     }
 
-    .comic-entry h3 {
-      margin-top: 0;
-      color: #002f6c;
+    .comic-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
     }
 
-    .comic-entry iframe {
+    .comic-embed {
       width: 100%;
       height: 600px;
+      max-width: 800px;
       border: none;
     }
 
@@ -87,8 +86,11 @@
         gap: 1rem;
       }
 
-      .comic-entry iframe {
+      .comic-embed {
         height: 500px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
       }
     }
   </style>
@@ -109,57 +111,69 @@
   <main class="content">
     <h2>Comics</h2>
 
-    <div class="comic-entry">
-      <h3>Eating in Prison</h3>
-      <iframe src="comics/Sc-1-Eating in Prison.pdf"></iframe>
+    <div class="comic-wrapper">
+      <div class="comic-title">Eating in Prison</div>
+      <iframe class="comic-embed" src="comics/Sc-1-Eating in Prison.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Aaachooo</h3>
-      <iframe src="comics/Sc-2-Aaachooo.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Aaachooo</div>
+      <iframe class="comic-embed" src="comics/Sc-2-Aaachooo.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Welcome to Slamcaster</h3>
-      <iframe src="comics/Sc-3-Welcome to Slamcaster.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Welcome to Slamcaster</div>
+      <iframe class="comic-embed" src="comics/Sc-3-Welcome to Slamcaster.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Job Interview</h3>
-      <iframe src="comics/Sc-4-Job Interview.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Job Interview</div>
+      <iframe class="comic-embed" src="comics/Sc-4-Job Interview.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Smoke Grenade</h3>
-      <iframe src="comics/Sc-5-Smoke Grenade.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Smoke Grenade</div>
+      <iframe class="comic-embed" src="comics/Sc-5-Smoke Grenade.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Get the Geek</h3>
-      <iframe src="comics/Sc-6-Get the Geek.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Get the Geek</div>
+      <iframe class="comic-embed" src="comics/Sc-6-Get the Geek.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Shoejack</h3>
-      <iframe src="comics/Sc-7-Shoejack.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Shoejack</div>
+      <iframe class="comic-embed" src="comics/Sc-7-Shoejack.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Find that Paperclip</h3>
-      <iframe src="comics/Sc-8-Find that Paperclip.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Find that Paperclip</div>
+      <iframe class="comic-embed" src="comics/Sc-8-Find that Paperclip.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Clean your Clock</h3>
-      <iframe src="comics/Sc-9-Clean your Clock.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Clean your Clock</div>
+      <iframe class="comic-embed" src="comics/Sc-9-Clean your Clock.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>No Black Hats in Visiting</h3>
-      <iframe src="comics/Sc-10-No Black Hats in Visiting.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">No Black Hats in Visiting</div>
+      <iframe class="comic-embed" src="comics/Sc-10-No Black Hats in Visiting.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Denied</h3>
-      <iframe src="comics/Sc-11-Denied.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Denied</div>
+      <iframe class="comic-embed" src="comics/Sc-11-Denied.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Inmates be Crazy</h3>
-      <iframe src="comics/Sc-12-Inmates be Crazy.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Inmates be Crazy</div>
+      <iframe class="comic-embed" src="comics/Sc-12-Inmates be Crazy.pdf"></iframe>
     </div>
-    <div class="comic-entry">
-      <h3>Pay Raise</h3>
-      <iframe src="comics/Sc-13-Pay Raise.pdf"></iframe>
+
+    <div class="comic-wrapper">
+      <div class="comic-title">Pay Raise</div>
+      <iframe class="comic-embed" src="comics/Sc-13-Pay Raise.pdf"></iframe>
     </div>
   </main>
 
