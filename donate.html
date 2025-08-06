@@ -12,13 +12,7 @@
     gtag('config', 'G-ZVPXQR0PH9');
   </script>
 
-  <script>
-/**
- * Function that captures a click on an outbound link in Analytics.
- * This function takes a valid URL string as an argument, and uses that URL string
- * as the event label. Setting the transport method to 'beacon' lets the hit be sent
- * using 'navigator.sendBeacon' in browser that support it.
- */
+<script>
 function captureOutboundLink(url) {
   gtag('event', 'click', {
     'event_category': 'outbound',
@@ -29,7 +23,8 @@ function captureOutboundLink(url) {
     }
   });
 }
-
+</script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Donate - Slamcaster</title>
