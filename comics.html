@@ -2,16 +2,14 @@
 <html lang="en">
 
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-ZVPXQR0PH9');
+  </script>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZVPXQR0PH9');
-</script>
-  
   <link rel="icon" type="image/png" href="Sc-logo2-1-pfp.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,7 +45,8 @@
       background-color: #0074e8;
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      flex-wrap: wrap;
+      gap: 1.25rem;
       padding: 0.75rem 0;
     }
 
@@ -90,6 +89,14 @@
       color: white;
       text-align: center;
       padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 0.5rem;
+      font-size: 0.85rem;
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
@@ -117,6 +124,8 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="comics.html">Comics</a>
+    <a href="donate.html">Donate</a>
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 
@@ -217,6 +226,9 @@
 
   <footer>
     &copy; 2025 Amadeo. All rights reserved.
+    <div>
+      <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
+    </div>
   </footer>
 </body>
 
