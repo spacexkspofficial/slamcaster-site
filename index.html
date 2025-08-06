@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZVPXQR0PH9');
-</script>
-  
-  <link rel="icon" type="image/png" href="Sc-logo2-1-pfp.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slamcaster</title>
+  <title>Home - Slamcaster</title>
+  <link rel="icon" type="image/png" href="Sc-logo2-1-pfp.png" />
   <style>
     body {
       margin: 0;
@@ -23,130 +12,115 @@
       background-color: white;
       color: #000;
     }
-
     header {
       background-color: #002f6c;
       padding: 1rem 0 0.5rem;
       text-align: center;
     }
-
     header img {
       max-width: 90%;
       height: auto;
       display: block;
       margin: 0 auto 0.5rem;
     }
-
     .tagline {
       color: #fff;
       margin: 0.5rem 0 0;
       font-weight: 500;
     }
-
     nav {
       background-color: #0074e8;
       display: flex;
       justify-content: center;
       gap: 2rem;
       padding: 0.75rem 0;
+      flex-wrap: wrap;
     }
-
     nav a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
     }
-
     .content {
+      padding: 2rem;
+      text-align: center;
+    }
+    .logo-section {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .logo-block {
+      display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       gap: 2rem;
-      padding: 2rem;
     }
-
-    .bio-section {
-      flex: 1 1 300px;
-      max-width: 600px;
-    }
-
-    .bio-section h2 {
-      margin-top: 0;
-    }
-
-    .bio-section p {
-      line-height: 1.5;
-    }
-
-    .logo2 {
-      flex: 0 1 300px;
+    .logo1 {
       max-width: 300px;
-    }
-
-    .logo2 img {
-      width: 100%;
       height: auto;
     }
-
-    .vinnie-photo {
+    .logo2 {
       max-width: 300px;
-      margin-top: 1rem;
+      height: auto;
     }
-
+    .announcement {
+      max-width: 300px;
+      text-align: left;
+      font-size: 1.1rem;
+    }
     footer {
       background-color: #002f6c;
       color: white;
       text-align: center;
       padding: 1rem;
     }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-      }
-
-      .content {
-        flex-direction: column;
-        align-items: center;
-      }
+    .footer-links {
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+    .footer-links a {
+      color: white;
+      margin: 0 0.5rem;
+      text-decoration: underline;
     }
   </style>
 </head>
-
 <body>
   <header>
-    <img src="Sc-logo1-1.png" alt="Slamcaster Logo" />
+    <img src="Sc-logo1-1.png" alt="Slamcaster Logo" class="logo1" />
     <p class="tagline">Art & Comics from a Voice Behind Bars</p>
   </header>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="comics.html">Comics</a>
+    <a href="donate.html">Donate</a>
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 
   <main class="content">
-    <div class="bio-section">
-      <h2>About Vinnie</h2>
-      <p>
-        Slamcaster draws on Vinnie Amadeo’s 30+ years in the California penal system, starting out in Los Padrinos Juvenile Hall at the age of 14 and continuing through an as-yet-undetermined release date set by the California Board of Parole Hearings. Mr. Amadeo immersed himself in the arts in total isolation for over ten years at the Pelican Bay Fine Arts Academy and spent an additional two years studying comics and sequential art at Lancaster State University. His lifelong vision? To poke fun at every inmate, guard, nurse, doctor, psychiatrist, dentist, gang member, or anyone else unlucky enough to fall in the sights of his sketch pencil.
-
-          <br><br>Every comic he draws is rooted in a real event that actually happened. As Vinnie says, “Humor allows you to make a point without drawing blood.” While he might be poking fun at just about everyone in his visual range, he’s never trying to hurt feelings—he just loves irony, and there’s a whole lot of that going on ‘round here.
-        </p>
-      <img class="vinnie-photo" src="64225c99-6b41-4ccb-be96-b0e6ecd6ef9e.png" alt="Photo of Vinnie" />
-    </div>
-    <div class="logo2">
-      <img src="Sc-logo2-1.png" alt="Slamcaster Art Logo" />
+    <div class="logo-section">
+      <div class="logo-block">
+        <div class="announcement">
+          <h3>Coming Soon</h3>
+          <p>A dozen new comics are dropping soon — stay tuned!</p>
+        </div>
+        <img src="Sc-logo2-1.png" alt="Slamcaster Secondary Logo" class="logo2" />
+      </div>
     </div>
   </main>
 
   <footer>
     &copy; 2025 Amadeo. All rights reserved.
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Service</a>
+    </div>
   </footer>
 </body>
-
 </html>
