@@ -3,16 +3,15 @@
 
 <head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZVPXQR0PH9');
+  </script>
 
-  gtag('config', 'G-ZVPXQR0PH9');
-</script>
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Donate - Slamcaster</title>
@@ -64,6 +63,47 @@
       text-align: center;
     }
 
+    .donate-section {
+      max-width: 600px;
+      margin: 0 auto;
+      border: 2px solid #0074e8;
+      border-radius: 10px;
+      padding: 2rem;
+      background-color: #f4f8ff;
+    }
+
+    .donate-section h3 {
+      color: #002f6c;
+      margin-bottom: 1rem;
+    }
+
+    .donate-section p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .donate-button {
+      background-color: #0074e8;
+      color: white;
+      font-size: 1rem;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .disclaimer {
+      font-size: 0.9rem;
+      color: #333;
+      margin-top: 2rem;
+    }
+
+    .disclaimer a {
+      color: #0074e8;
+      text-decoration: underline;
+    }
+
     footer {
       background-color: #002f6c;
       color: white;
@@ -99,8 +139,15 @@
   </nav>
 
   <main>
-    <h2>Donate</h2>
-    <p>Coming soon.</p>
+    <div class="donate-section">
+      <h3>Support Vinnie’s Art</h3>
+      <p>Every donation helps bring Vinnie's voice and artwork to light. Your support ensures his stories continue to reach the world.</p>
+      <a class="donate-button" href="https://www.paypal.biz/alexspacex">Donate via PayPal</a>
+      <p class="disclaimer">
+        By submitting a donation, you confirm you have read and agree to our
+        <a href="terms.html" target="_blank">Terms of Service</a>, especially Section 21.
+      </p>
+    </div>
   </main>
 
   <footer>
