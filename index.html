@@ -101,6 +101,47 @@
   <title>Slamcaster - Home</title>
   <link rel="icon" type="image/png" href="logos/SCLOGO-PFP-1-min.png" />
   <style>
+
+.content-split {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.comic-sections {
+  flex: 1 1 60%;
+  max-width: 600px;
+}
+
+.comic-sections h2 {
+  margin-top: 0;
+}
+
+.comic-sections ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.comic-sections li::before {
+  content: "📄 ";
+}
+
+.logo-stack {
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.stacked-logo {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #eee;
+  border-radius: 8px;
+}
+    
     .release-list,
 .coming-list {
   list-style: none;
@@ -211,40 +252,38 @@
 
   <main class="container">
     <!-- Recent Releases -->
-<section class="recent-releases">
-  <h2>Recent Releases</h2>
-  <ul class="release-list">
-    <li>#13 Pay Raise</li>
-    <li>#14 Inmate 707</li>
-    <li>#15 500 Sheets of Paper</li>
-    <li>#16 Got the Yips</li>
-    <li>#17 Service Dogs</li>
-    <li>#18 No Nudity in Slamcaster</li>
-    <li>#19 School is Cancelled</li>
-    <li>#20 Breakfast is Late</li>
-    <li>#21 Darth Vader</li>
-    <li>#22 Fast Five</li>
-  </ul>
+<div class="content-split">
+  <div class="comic-sections">
+    <section class="recent-releases">
+      <h2>📢 Recent Releases</h2>
+      <ul>
+        <li>#13 Pay Raise</li>
+        <li>#14 Inmate 707</li>
+        <li>#15 500 Sheets of Paper</li>
+        <li>#16 Got the Yips</li>
+        <li>#17 Service Dogs</li>
+        <li>#18 No Nudity in Slamcaster</li>
+        <li>#19 School is Cancelled</li>
+        <li>#20 Breakfast is Late</li>
+        <li>#21 Darth Vader</li>
+        <li>#22 Fast Five</li>
+      </ul>
+    </section>
 
-  <h3 style="margin-top: 2rem;">New Logos</h3>
-  <ul class="release-list">
-    <li>Mugshot Logo</li>
-    <li>Warden Logo</li>
-    <li>Bars Logo</li>
-    <li>Clones Logo</li>
-    <li>Profile Picture (PFP)</li>
-  </ul>
-</section>
+    <section class="coming-soon">
+      <h2>🛠 Coming Soon</h2>
+      <ul>
+        <li>Comics #23–30</li>
+        <li>Colored Slamcaster Logo</li>
+      </ul>
+    </section>
+  </div>
 
-<!-- Coming Soon -->
-<section class="coming-soon">
-  <h2>Coming Soon</h2>
-  <ul class="coming-list">
-    <li>Colored Slamcaster Logo</li>
-    <li>#23–30 New Comic Drops</li>
-  </ul>
-</section>
-    <img class="logo2" src="logos/SCLOGO-vinnie-mugshot-1-min.png" alt="Slamcaster Logo 2">
+  <div class="logo-stack">
+    <img src="logos/SCLOGO-vinnie-mugshot-1-min.png" alt="Mugshot Logo" class="stacked-logo">
+    <img src="logos/SCLOGO-warden-1-min.png" alt="Warden Logo" class="stacked-logo">
+  </div>
+</div>
   </main>
 
   <footer>
