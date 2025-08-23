@@ -143,13 +143,14 @@
     
 .content-split {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: 2rem; /* Reduce gap from 4rem to 2rem */
+  flex-wrap: nowrap;
+  gap: 2rem;
   padding: 2rem 1rem;
   max-width: 1000px;
   margin: 0 auto;
-  flex-wrap: wrap;
 }
 
 .comic-sections {
@@ -242,12 +243,8 @@
     }
 
     .container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  display: block; /* not flex here */
   padding: 2rem;
-  gap: 2rem;
   max-width: 1100px;
   margin: 0 auto;
 }
