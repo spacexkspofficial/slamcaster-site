@@ -103,6 +103,10 @@
   
 <style>
 
+ .recent-releases {
+  margin-bottom: 1.5rem;
+} 
+
 .releases-layout {
   display: flex;
   flex-direction: row;
@@ -139,19 +143,17 @@
     
 .content-split {
   display: flex;
-  justify-content: center; /* ← centers everything */
+  justify-content: center;
   align-items: flex-start;
+  gap: 2rem; /* Reduce gap from 4rem to 2rem */
+  padding: 2rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
   flex-wrap: wrap;
-  gap: 4rem; /* ← clean fixed gap between columns */
 }
 
 .comic-sections {
-  flex: 1 1 60%;
-  max-width: 600px;
-}
-
-.comic-sections {
-  flex: 1 1 400px;
+  flex: 1 1 500px;
   max-width: 500px;
 }
 
