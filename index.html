@@ -105,6 +105,7 @@
 .content-split {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 2rem;
 }
@@ -128,11 +129,11 @@
 }
 
 .logo-stack {
-  flex: 1 1 30%;
+  flex: 1 1 250px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 1rem;
 }
 
 .stacked-logo {
@@ -198,13 +199,15 @@
     }
 
     .container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      align-items: center;
-      padding: 2rem;
-      gap: 2rem;
-    }
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
     .coming-soon {
       max-width: 300px;
