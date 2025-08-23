@@ -143,10 +143,7 @@
     
 .content-split {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: nowrap;
+  flex-direction: column;
   gap: 2rem;
   padding: 2rem 1rem;
   max-width: 1000px;
@@ -243,8 +240,12 @@
     }
 
     .container {
-  display: block; /* not flex here */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
   padding: 2rem;
+  gap: 1.5rem;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -280,7 +281,9 @@
 @media (min-width: 768px) {
   .content-split {
     flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
+    gap: 1.5rem;
   }
 
   .comic-sections {
