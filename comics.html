@@ -228,6 +228,31 @@
   transform: rotate(180deg);
 }
 
+/* Slide animation */
+.comic-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.comic-wrapper.open .comic-panel {
+  max-height: 1000px; /* big enough to show full image */
+  opacity: 1;
+}
+
+/* Arrow styling */
+.toggle-arrow {
+  float: right;
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.comic-wrapper.open .toggle-arrow {
+  transform: rotate(90deg);
+}
+
+
     
   </style>
 </head>
@@ -257,28 +282,30 @@
     </div>
 
     <div class="comic-wrapper">
-  <button class="dropdown-btn">
-    <span class="comic-title">#1 Eating in Prison</span>
-    <span class="arrow">&#9660;</span>
-  </button>
-  <div class="comic-content">
+  <div class="comic-title" onclick="toggleComic(this)">
+    Eating in Prison
+    <span class="toggle-arrow">▶</span>
+  </div>
+  <div class="comic-panel">
     <a href="comics/SC001-eating-in-prison-1-min.png" target="_blank">
-      <img class="comic-embed" data-src="comics/SC001-eating-in-prison-1-min.png" alt="Eating in Prison">
+      <img class="comic-embed" src="SC001-eating-in-prison-1-min.png" alt="Eating in Prison">
     </a>
   </div>
 </div>
 
+
     <div class="comic-wrapper">
-  <button class="dropdown-btn">
-    <span class="comic-title">#1 Eating in Prison</span>
-    <span class="arrow">&#9660;</span>
-  </button>
-  <div class="comic-content">
+  <div class="comic-title" onclick="toggleComic(this)">
+    Eating in Prison
+    <span class="toggle-arrow">▶</span>
+  </div>
+  <div class="comic-panel">
     <a href="comics/SC001-eating-in-prison-1-min.png" target="_blank">
-      <img class="comic-embed" data-src="comics/SC001-eating-in-prison-1-min.png" alt="Eating in Prison">
+      <img class="comic-embed" src="comics/SC001-eating-in-prison-1-min.png" alt="Eating in Prison">
     </a>
   </div>
 </div>
+
     
   </main>
 
@@ -305,6 +332,14 @@
     });
   });
 </script>
+
+<script>
+  function toggleComic(titleElement) {
+    const wrapper = titleElement.parentElement;
+    wrapper.classList.toggle('open');
+  }
+</script>
+  
 </body>
 
 </html>
