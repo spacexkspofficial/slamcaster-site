@@ -100,37 +100,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Slamcaster - Home</title>
   <link rel="icon" type="image/png" href="logos/SCLOGO-PFP-1-min.png" />
-  <style>
+  
+<style>
 
 .releases-layout {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
   align-items: flex-start;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .releases {
-  flex: 1 1 400px;
+  flex: 1 1 60%;
   max-width: 600px;
 }
 
 .logos {
-  flex: 0 1 300px;
+  flex: 0 0 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  padding-top: 0.5rem;
 }
 
 .logos img {
   width: 100%;
-  max-width: 200px;
+  max-width: 180px;
   height: auto;
-  border-radius: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
     
 .content-split {
