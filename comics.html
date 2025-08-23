@@ -195,6 +195,40 @@
         height: auto;
       }
     }
+
+    .dropdown-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem 0;
+  text-align: left;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.comic-content {
+  display: none;
+  margin-top: 1rem;
+}
+
+.comic-wrapper.active .comic-content {
+  display: block;
+}
+
+.comic-wrapper.active .arrow {
+  transform: rotate(180deg);
+}
+
+    
   </style>
 </head>
 
@@ -254,6 +288,23 @@
       <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
     </div>
   </footer>
+
+  <script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wrapper = btn.parentElement;
+      const content = wrapper.querySelector('.comic-content');
+      const img = content.querySelector('img');
+
+      wrapper.classList.toggle('active');
+
+      // Lazy-load the image when expanding
+      if (img && !img.src) {
+        img.src = img.dataset.src;
+      }
+    });
+  });
+</script>
 </body>
 
 </html>
