@@ -260,6 +260,19 @@
   transform: rotate(90deg);
 }
 
+.landscape-logo {
+  display: block;
+  margin: 40px auto 20px auto;
+  max-width: 100%;
+  width: 300px; /* or whatever fixed width looks good on desktop */
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .landscape-logo {
+    width: 90%;
+  }
+}
 
     
   </style>
@@ -534,7 +547,7 @@
 
 
 <div style="text-align: center; margin-top: 3rem;">
-  <img src="comics/SCLOGO-vinnie-bars-1-min.png" alt="Landscape Logo" class="responsive-landscape-logo">
+  <img src="images/SCLOGO-vinnie-bars-1-min.png" alt="Landscape Logo" class="landscape-logo">
 </div>
 
 
