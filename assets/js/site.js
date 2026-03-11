@@ -6,6 +6,8 @@
   initRevealAnimations();
   initLegalAccordion();
   initTableOfContents();
+  openHashTarget();
+  window.addEventListener("hashchange", openHashTarget);
   initComicsArchive();
 });
 
@@ -147,7 +149,7 @@ function initRevealAnimations() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
+        if (!entry.isIntersecting && entry.intersectionRatio <= 0) {
           return;
         }
 
@@ -156,7 +158,8 @@ function initRevealAnimations() {
       });
     },
     {
-      threshold: 0.15
+      threshold: 0.01,
+      rootMargin: "0px 0px -8% 0px"
     }
   );
 
@@ -357,6 +360,22 @@ function slugify(text, fallbackIndex) {
   return cleaned || `section-${fallbackIndex}`;
 }
 
+function openHashTarget() {
+  if (!window.location.hash) {
+    return;
+  }
+
+  const target = document.querySelector(window.location.hash);
+  if (!target) {
+    return;
+  }
+
+  const details = target.closest("details");
+  if (details) {
+    details.open = true;
+  }
+}
+
 function initComicsArchive() {
   const archive = document.querySelector("[data-comics-archive]");
 
@@ -451,3 +470,5 @@ function updateComicCount(countElement, total) {
 
   countElement.textContent = `${total} comic${total === 1 ? "" : "s"}`;
 }
+
+
