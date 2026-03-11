@@ -1,213 +1,85 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Slamcaster</title>
+  <link rel="icon" type="image/png" href="logos/SCLOGO-PFP-1-min.png" />
+  <link rel="stylesheet" href="assets/css/site.css" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-ZVPXQR0PH9');
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      analytics_storage: "denied"
+    });
+    gtag("js", new Date());
+    gtag("config", "G-ZVPXQR0PH9");
   </script>
-
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-
-  // Deny all by default until consent is given
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    analytics_storage: 'denied'
-  });
-</script>
-
-  <!-- Cookie Consent Banner -->
-<style>
-  #cookie-consent-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #002f6c;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    font-size: 0.9rem;
-    z-index: 1000;
-  }
-
-  #cookie-consent-banner a {
-    color: #90caf9;
-    text-decoration: underline;
-    margin: 0 0.25rem;
-  }
-
-  #cookie-consent-banner button {
-    margin: 0 0.25rem;
-    background-color: #0074e8;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-
-  #cookie-consent-banner button.reject {
-    background-color: #777;
-  }
-</style>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    if (!localStorage.getItem('cookiesChoice')) {
-      const banner = document.createElement('div');
-      banner.id = 'cookie-consent-banner';
-      banner.innerHTML = `
-        This site uses cookies for analytics and advertising. By continuing, you agree to our
-        <a href="privacy.html" target="_blank">Privacy Policy</a> and
-        <a href="terms.html" target="_blank">Terms of Service</a>.
-        <button id="accept-cookies">Accept</button>
-        <button id="reject-cookies" class="reject">Reject</button>
-      `;
-      document.body.appendChild(banner);
-
-      document.getElementById('accept-cookies').onclick = function () {
-        gtag('consent', 'update', {
-          ad_storage: 'granted',
-          analytics_storage: 'granted'
-        });
-        localStorage.setItem('cookiesChoice', 'accepted');
-        banner.remove();
-      };
-
-      document.getElementById('reject-cookies').onclick = function () {
-        gtag('consent', 'update', {
-          ad_storage: 'denied',
-          analytics_storage: 'denied'
-        });
-        localStorage.setItem('cookiesChoice', 'rejected');
-        banner.remove();
-      };
-    }
-  });
-</script>
-
-  <link rel="icon" type="image/png" href="logos/SCLOGO-PFP-1-min.png" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Slamcaster</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: #000;
-    }
-
-    header {
-      background-color: #002f6c;
-      padding: 1rem 0 0.5rem;
-      text-align: center;
-    }
-
-    header img {
-      max-width: 90%;
-      height: auto;
-      display: block;
-      margin: 0 auto 0.5rem;
-    }
-
-    .tagline {
-      color: #fff;
-      margin: 0.5rem 0 0;
-      font-weight: 500;
-    }
-
-    nav {
-      background-color: #0074e8;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      padding: 0.75rem 0;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    .contact-info {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .mail-block {
-      background: #f2f2f2;
-      padding: 1rem;
-      border-left: 4px solid #0074e8;
-      margin-top: 1rem;
-    }
-
-    footer {
-      background-color: #002f6c;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #ccc;
-      margin: 0 0.5rem;
-      font-size: 0.85rem;
-      text-decoration: underline;
-    }
-  </style>
+  <script src="assets/js/site.js" defer></script>
 </head>
-
 <body>
-  <header>
-    <img src="Sc-logo1-1.png" alt="Slamcaster Logo" />
-    <p class="tagline">Art & Comics from a Voice Behind Bars</p>
-  </header>
+  <div class="site-shell">
+    <header class="hero-header">
+      <div class="page-width header-inner" data-reveal>
+        <a class="brand-link" href="index.html" aria-label="Slamcaster home">
+          <img class="brand-logo" src="Sc-logo1-1.png" alt="Slamcaster Logo" />
+        </a>
+        <p class="tagline">Art &amp; Comics from a Voice Behind Bars</p>
+      </div>
+    </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="comics.html">Comics</a>
-    <a href="donate.html">Donate</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <div class="container">
-    <h2>Contact</h2>
-    <div class="contact-info">
-      <p><strong>Email:</strong> <a href="mailto:contact@slamcaster.com">contact@slamcaster.com</a></p>
-      <div class="mail-block">
-        <strong>Mail To:</strong><br>
-        Vinnie Amadeo #K67769<br>
-        CSP - LAC C1-204<br>
-        P.O. Box 4610<br>
-        Lancaster, CA 93539
+    <div class="nav-shell">
+      <div class="page-width nav-inner">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>Menu</button>
+        <nav class="site-nav" id="site-nav" data-site-nav>
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="comics.html">Comics</a>
+          <a class="nav-link" href="donate.html">Donate</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
       </div>
     </div>
+
+    <main class="page page-width">
+      <section class="page-hero hero-single" data-reveal>
+        <div class="hero-copy">
+          <p class="eyebrow">Contact</p>
+          <h1 class="page-title">Get in Touch</h1>
+          <p class="page-intro">Reach Slamcaster by email or send mail directly using the address below.</p>
+        </div>
+      </section>
+
+      <section class="info-grid">
+        <article class="panel info-card" data-reveal>
+          <h2 class="panel-title">Email</h2>
+          <p class="panel-subtitle">For questions, requests, or general contact.</p>
+          <p><a class="contact-link" href="mailto:contact@slamcaster.com">contact@slamcaster.com</a></p>
+        </article>
+
+        <article class="panel mail-card" data-reveal>
+          <h2 class="panel-title">Mail To</h2>
+          <address>
+            Vinnie Amadeo #K67769<br />
+            CSP - LAC C1-204<br />
+            P.O. Box 4610<br />
+            Lancaster, CA 93539
+          </address>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-width footer-inner">
+        <p class="footer-copy">&copy; 2026 Vinnie Amadeo. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
   </div>
-
-  <footer>
-    &copy; 2026 Amadeo. All rights reserved.
-    <div>
-      <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
-    </div>
-  </footer>
 </body>
-
 </html>

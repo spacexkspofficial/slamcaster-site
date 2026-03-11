@@ -1,357 +1,105 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZVPXQR0PH9');
-</script>
-
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-
-  // Deny all by default until consent is given
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    analytics_storage: 'denied'
-  });
-</script>
-
-  <!-- Cookie Consent Banner -->
-<style>
-  #cookie-consent-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #002f6c;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    font-size: 0.9rem;
-    z-index: 1000;
-  }
-
-  #cookie-consent-banner a {
-    color: #90caf9;
-    text-decoration: underline;
-    margin: 0 0.25rem;
-  }
-
-  #cookie-consent-banner button {
-    margin: 0 0.25rem;
-    background-color: #0074e8;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-
-  #cookie-consent-banner button.reject {
-    background-color: #777;
-  }
-</style>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    if (!localStorage.getItem('cookiesChoice')) {
-      const banner = document.createElement('div');
-      banner.id = 'cookie-consent-banner';
-      banner.innerHTML = `
-        This site uses cookies for analytics and advertising. By continuing, you agree to our
-        <a href="privacy.html" target="_blank">Privacy Policy</a> and
-        <a href="terms.html" target="_blank">Terms of Service</a>.
-        <button id="accept-cookies">Accept</button>
-        <button id="reject-cookies" class="reject">Reject</button>
-      `;
-      document.body.appendChild(banner);
-
-      document.getElementById('accept-cookies').onclick = function () {
-        gtag('consent', 'update', {
-          ad_storage: 'granted',
-          analytics_storage: 'granted'
-        });
-        localStorage.setItem('cookiesChoice', 'accepted');
-        banner.remove();
-      };
-
-      document.getElementById('reject-cookies').onclick = function () {
-        gtag('consent', 'update', {
-          ad_storage: 'denied',
-          analytics_storage: 'denied'
-        });
-        localStorage.setItem('cookiesChoice', 'rejected');
-        banner.remove();
-      };
-    }
-  });
-</script>
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Slamcaster - Home</title>
   <link rel="icon" type="image/png" href="logos/SCLOGO-PFP-1-min.png" />
-  
-<style>
-
- .recent-releases {
-  margin-bottom: 1.5rem;
-} 
-
-.releases-layout {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-
-.releases {
-  flex: 1 1 60%;
-  max-width: 600px;
-}
-
-.logos {
-  flex: 0 0 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding-top: 0.5rem;
-}
-
-.logos img {
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-    
-.content-split {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2rem 1rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.comic-sections {
-  flex: 1 1 60%;
-  max-width: 600px;
-}
-
-.comic-sections h2 {
-  margin-top: 0;
-}
-
-.comic-sections ul {
-  list-style: none;
-  padding-left: 1rem;
-}
-
-.comic-sections li::before {
-  content: "📄 ";
-}
-
-.logo-stack {
-  flex: 1 1 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  max-width: 250px;
-}
-
-.stacked-logo {
-  max-width: 100%;
-  height: auto;
-  border: 2px solid #eee;
-  border-radius: 8px;
-}
-    
-    .release-list,
-.coming-list {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 0.5rem;
-}
-    .release-list li,
-.coming-list li {
-  background: #f4f4f4;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-}
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: #000;
-    }
-
-    header {
-      background-color: #002f6c;
-      padding: 1rem 0 0.5rem;
-      text-align: center;
-    }
-
-    header img {
-      max-width: 90%;
-      height: auto;
-      display: block;
-      margin: 0 auto 0.5rem;
-    }
-
-    .tagline {
-      color: #fff;
-      margin: 0.5rem 0 0;
-      font-weight: 500;
-    }
-
-    nav {
-      background-color: #0074e8;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.25rem;
-      padding: 0.75rem 0;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  padding: 2rem;
-  gap: 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-    .coming-soon {
-      max-width: 300px;
-      font-size: 1.1rem;
-      text-align: left;
-    }
-
-    .logo2 {
-      max-width: 300px;
-    }
-
-    footer {
-      background-color: #002f6c;
-      color: white;
-      text-align: center;
-      padding: 1rem 0 0.5rem;
-    }
-
-    .policy-links {
-      font-size: 0.8rem;
-      padding: 0.5rem;
-    }
-
-    .policy-links a {
-      color: #fff;
-      text-decoration: underline;
-      margin: 0 0.5rem;
-    }
-
-@media (min-width: 768px) {
-  .content-split {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-
-  .comic-sections {
-    flex: 1 1 60%;
-    max-width: 600px;
-  }
-
-  .logo-stack {
-    flex: 0 0 250px;
-  }
-}
-  
-  </style>
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      analytics_storage: "denied"
+    });
+    gtag("js", new Date());
+    gtag("config", "G-ZVPXQR0PH9");
+  </script>
+  <script src="assets/js/site.js" defer></script>
 </head>
-
 <body>
-  <header>
-    <img src="Sc-logo1-1.png" alt="Slamcaster Logo">
-    <p class="tagline">Art & Comics from a Voice Behind Bars</p>
-  </header>
+  <div class="site-shell">
+    <header class="hero-header">
+      <div class="page-width header-inner" data-reveal>
+        <a class="brand-link" href="index.html" aria-label="Slamcaster home">
+          <img class="brand-logo" src="Sc-logo1-1.png" alt="Slamcaster Logo" />
+        </a>
+        <p class="tagline">Art &amp; Comics from a Voice Behind Bars</p>
+      </div>
+    </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="comics.html">Comics</a>
-    <a href="donate.html">Donate</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <main class="container">
-    <!-- Recent Releases -->
-<div class="content-split">
-  <div class="comic-sections">
-    <section class="recent-releases">
-      <h2>📢 Recent Releases [Jan 5, 2026]</h2>
-      <ul>
-        <li>#23 The Secret Lives of Lifers</li>
-        <li>#24 Half-a-Minute to Chow</li>
-        <li>#25 Slamcaster Self Help Classes that Didn't Make the Cut</li>
-        <li>#26 Canteen Prices</li>
-        <li>#27 Eating in the Chow Hall</li>
-        <li>#28 Cellmate Roulette</li>
-      </ul>
-    </section>
-
-    <section class="coming-soon">
-      <h2>🛠 Coming Soon</h2>
-      <ul>
-        <li>Comics #29–35</li>
-        <li>Colored Slamcaster Logo</li>
-      </ul>
-    </section>
-  </div>
-
-  <div class="logo-stack">
-    <img src="logos/SCLOGO-vinnie-mugshot-1-min.png" alt="Mugshot Logo" class="stacked-logo">
-    <img src="logos/SCLOGO-warden-1-min.png" alt="Warden Logo" class="stacked-logo">
-  </div>
-</div>
-  </main>
-
-  <footer>
-    &copy; 2026 Vinnie Amadeo<br />
-    <div class="policy-links">
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Service</a>
+    <div class="nav-shell">
+      <div class="page-width nav-inner">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>Menu</button>
+        <nav class="site-nav" id="site-nav" data-site-nav>
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="comics.html">Comics</a>
+          <a class="nav-link" href="donate.html">Donate</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+      </div>
     </div>
-  </footer>
-</body>
 
+    <main class="page page-width">
+      <section class="page-hero" data-reveal>
+        <div class="hero-copy">
+          <p class="eyebrow">Independent Comic Archive</p>
+          <h1 class="page-title">Slamcaster</h1>
+          <p class="page-intro">Art &amp; Comics from a Voice Behind Bars.</p>
+          <div class="hero-actions">
+            <a class="button" href="comics.html">Browse Comics</a>
+            <a class="button secondary" href="about.html">About Vinnie</a>
+            <a class="button secondary" href="donate.html">Support the Work</a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-logo-stack">
+            <div class="hero-logo-frame">
+              <img src="logos/SCLOGO-vinnie-mugshot-1-min.png" alt="Mugshot Logo" />
+            </div>
+            <div class="hero-logo-frame">
+              <img src="logos/SCLOGO-warden-1-min.png" alt="Warden Logo" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid two-column-grid">
+        <article class="panel" data-reveal>
+          <h2 class="panel-title">&#128226; Recent Releases [Jan 5, 2026]</h2>
+          <ul class="release-list">
+            <li>#23 The Secret Lives of Lifers</li>
+            <li>#24 Half-a-Minute to Chow</li>
+            <li>#25 Slamcaster Self Help Classes that Didn&#39;t Make the Cut</li>
+            <li>#26 Canteen Prices</li>
+            <li>#27 Eating in the Chow Hall</li>
+            <li>#28 Cellmate Roulette</li>
+          </ul>
+        </article>
+
+        <article class="panel" data-reveal>
+          <h2 class="panel-title">&#128736; Coming Soon</h2>
+          <ul class="release-list">
+            <li>Comics #29-35</li>
+            <li>Colored Slamcaster Logo</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-width footer-inner">
+        <p class="footer-copy">&copy; 2026 Vinnie Amadeo. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
 </html>

@@ -1,654 +1,622 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comics - Slamcaster</title>
+  <link rel="icon" type="image/png" href="logos/SCLOGO-PFP-1-min.png" />
+  <link rel="stylesheet" href="assets/css/site.css" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-ZVPXQR0PH9');
-  </script>
-
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-
-  // Deny all by default until consent is given
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    analytics_storage: 'denied'
-  });
-</script>
-
-  <!-- Cookie Consent Banner -->
-<style>
-  #cookie-consent-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #002f6c;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    font-size: 0.9rem;
-    z-index: 1000;
-  }
-
-  #cookie-consent-banner a {
-    color: #90caf9;
-    text-decoration: underline;
-    margin: 0 0.25rem;
-  }
-
-  #cookie-consent-banner button {
-    margin: 0 0.25rem;
-    background-color: #0074e8;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-
-  #cookie-consent-banner button.reject {
-    background-color: #777;
-  }
-</style>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    if (!localStorage.getItem('cookiesChoice')) {
-      const banner = document.createElement('div');
-      banner.id = 'cookie-consent-banner';
-      banner.innerHTML = `
-        This site uses cookies for analytics and advertising. By continuing, you agree to our
-        <a href="privacy.html" target="_blank">Privacy Policy</a> and
-        <a href="terms.html" target="_blank">Terms of Service</a>.
-        <button id="accept-cookies">Accept</button>
-        <button id="reject-cookies" class="reject">Reject</button>
-      `;
-      document.body.appendChild(banner);
-
-      document.getElementById('accept-cookies').onclick = function () {
-        gtag('consent', 'update', {
-          ad_storage: 'granted',
-          analytics_storage: 'granted'
-        });
-        localStorage.setItem('cookiesChoice', 'accepted');
-        banner.remove();
-      };
-
-      document.getElementById('reject-cookies').onclick = function () {
-        gtag('consent', 'update', {
-          ad_storage: 'denied',
-          analytics_storage: 'denied'
-        });
-        localStorage.setItem('cookiesChoice', 'rejected');
-        banner.remove();
-      };
-    }
-  });
-</script>
-
-  <link rel="icon" type="image/png" href="logos/SCLOGO-PFP-1-min.png" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Comics - Slamcaster</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: #000;
-    }
-
-    header {
-      background-color: #002f6c;
-      padding: 1rem 0 0.5rem;
-      text-align: center;
-    }
-
-    header img {
-      max-width: 90%;
-      height: auto;
-      display: block;
-      margin: 0 auto 0.5rem;
-    }
-
-    .tagline {
-      color: #fff;
-      margin: 0.5rem 0 0;
-      font-weight: 500;
-    }
-
-    nav {
-      background-color: #0074e8;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.25rem;
-      padding: 0.75rem 0;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .content {
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    .comic-wrapper {
-      margin: 2rem auto;
-      max-width: 900px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      background-color: #f9f9f9;
-    }
-
-    .comic-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-
-    .comic-embed {
-      width: 100%;
-      height: auto;
-      border: none;
-      max-width: 100%;
-    }
-
-    .responsive-landscape-logo {
-  max-width: 100%;
-  width: 300px;
-  height: auto;
-  display: block;
-  margin: 2rem auto 0; /* center with margin */
-    }
-
-    footer {
-      background-color: #002f6c;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #ccc;
-      margin: 0 0.5rem;
-      font-size: 0.85rem;
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-      }
-
-      .comic-embed {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    .dropdown-btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  font-size: 1.2rem;
-  font-weight: bold;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.75rem 0;
-  text-align: left;
-}
-
-.arrow {
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
-}
-
-.comic-content {
-  display: none;
-  margin-top: 1rem;
-}
-
-.comic-wrapper.active .comic-content {
-  display: block;
-}
-
-.comic-wrapper.active .arrow {
-  transform: rotate(180deg);
-}
-
-/* Slide animation */
-.comic-panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
-  opacity: 0;
-}
-
-.comic-wrapper.open .comic-panel {
-  max-height: 1000px; /* big enough to show full image */
-  opacity: 1;
-}
-
-/* Arrow styling */
-.toggle-arrow {
-  float: right;
-  transition: transform 0.3s ease;
-  font-size: 1.2rem;
-}
-
-.comic-wrapper.open .toggle-arrow {
-  transform: rotate(90deg);
-}
-
-.landscape-logo {
-  display: block;
-  margin: 40px auto 20px auto;
-  max-width: 100%;
-  width: 300px; /* or whatever fixed width looks good on desktop */
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  .landscape-logo {
-    width: 90%;
-  }
-}
-
-    
-  </style>
-</head>
-
-<body>
-  <header>
-    <img src="Sc-logo1-1.png" alt="Slamcaster Logo" />
-    <p class="tagline">Art & Comics from a Voice Behind Bars</p>
-  </header>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="comics.html">Comics</a>
-    <a href="donate.html">Donate</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <main class="content">
-    <h2>Comics [Click to Expand]</h2>
-
-
-
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #1 Eating in Prison
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC001-eating-in-prison-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC001-eating-in-prison-1-min.png" alt="#1 Eating in Prison">
-    </a>
-  </div>
-</div>
-
-  <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #2 Aaachoo!
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC002-aaachoo-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC002-aaachoo-1-min.png" alt="#2 Aaachoo!">
-    </a>
-  </div>
-</div>
-
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #3 Welcome to Slamcaster
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC003-welcome-to-slamcaster-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC003-welcome-to-slamcaster-1-min.png" alt="#3 Welcome to Slamcaster">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #4 Job Inteview
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC004-job-interview-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC004-job-interview-1-min.png" alt="#4 Job Inteview">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #5 Smoke Grenade
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC005-smoke-grenade-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC005-smoke-grenade-1-min.png" alt="#5 Smoke Grenade">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #6 Get the Geek
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC006-get-the-geek-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC006-get-the-geek-1-min.png" alt="#6 Get the Geek">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #7 Shoe Jack
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC007-shoe-jack-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC007-shoe-jack-1-min.png" alt="#7 Shoe Jack">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #8 Find that Paperclip 
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC008-find-that-paperclip-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC008-find-that-paperclip-1-min.png" alt="#8 Find that Paperclip">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #9 Clean your Clock
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC009-clean-your-clock-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC009-clean-your-clock-1-min.png" alt="#9 Clean your Clock">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #10 No Black Hats
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC010-no-black-hats-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC010-no-black-hats-1-min.png" alt="#10 No Black Hats">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #11 Denied
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC011-denied-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC011-denied-1-min.png" alt="#11 Denied">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #12 Inmates be Crazy
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC012-inmates-be-crazy-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC012-inmates-be-crazy-1-min.png" alt="#12 Inmates be Crazy">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #13 Pay Raise
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC013-pay-raise-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC013-pay-raise-1-min.png" alt="#13 Pay Raise">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #14 Inmate 707
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC014-inmate-707-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC014-inmate-707-1-min.png" alt="#14 Inmate 707">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #15 500 Sheets of Paper
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC015-500-sheets-of-paper-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC015-500-sheets-of-paper-1-min.png" alt="#15 500 Sheets of Paper">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #16 Got the Yips
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC016-got-the-yips-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC016-got-the-yips-1-min.png" alt="#16 Got the Yips">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #17 Service Dogs
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC017-service-dogs-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC017-service-dogs-1-min.png" alt="#17 Service Dogs">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #18 No Nudity in Slamcaster
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC018-no-nudity-in-slamcaster-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC018-no-nudity-in-slamcaster-1-min.png" alt="#18 No Nudity in Slamcaster">
-    </a>
-  </div>
-</div>
-    <div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #19 School is Cancelled
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC019-school-is-cancelled-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC019-school-is-cancelled-1-min.png" alt="#19 School is Cancelled">
-    </a>
-  </div>
-</div>
-<div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #20 Break is Late
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC020-breakfast-is-late-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC020-breakfast-is-late-1-min.png" alt="#20 Break is Late">
-    </a>
-  </div>
-</div>
-<div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #21 Darth Vader
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC021-darth-vader-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC021-darth-vader-1-min.png" alt="#21 Darth Vader">
-    </a>
-  </div>
-</div>
-<div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #22 Fast Five
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC022-fast-five-1-min.png" target="_blank">
-      <img class="comic-embed" src="comics/SC022-fast-five-1-min.png" alt="#22 Fast Five">
-    </a>
-  </div>
-</div>
-<div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #23 The Secret Lives of Lifers
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC023-the-secret-lives-of-lifers-1.png" target="_blank">
-      <img class="comic-embed" src="comics/SC023-the-secret-lives-of-lifers-1.png" alt="#23 The Secret Lives of Lifers">
-    </a>
-  </div>
-</div>
-<div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #24 Half-a-Minute to Chow
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC024-half-a-minute-to-chow-1.png" target="_blank">
-      <img class="comic-embed" src="comics/SC024-half-a-minute-to-chow-1.png" alt="#24 Half-a-Minute to Chow">
-    </a>
-  </div>
-</div>
-<div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #25 Slamcaster Self Help Classes that Didn't Make the Cut
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC025-slamcaster-self-help-classes-that-didnt-make-the-cut-1.png" target="_blank">
-      <img class="comic-embed" src="comics/SC025-slamcaster-self-help-classes-that-didnt-make-the-cut-1.png" alt="#25 Slamcaster Self Help Classes that Didn't Make the Cut">
-    </a>
-  </div>
-</div>
-<div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #26 Canteen Prices
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC026-canteen-prices-1.png" target="_blank">
-      <img class="comic-embed" src="comics/SC026-canteen-prices-1.png" alt="#26 Canteen Prices">
-    </a>
-  </div>
-</div>
-<div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #27 Eating in the Chow Hall
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC027-eating-in-the-chow-hall-1.png" target="_blank">
-      <img class="comic-embed" src="comics/SC027-eating-in-the-chow-hall-1.png" alt="#27 Eating in the Chow Hall">
-    </a>
-  </div>
-</div>
-<div class="comic-wrapper">
-  <div class="comic-title" onclick="toggleComic(this)">
-    #28 Cellmate Roulette
-    <span class="toggle-arrow">▶</span>
-  </div>
-  <div class="comic-panel">
-    <a href="comics/SC028-cellmate-roulette-1.png" target="_blank">
-      <img class="comic-embed" src="comics/SC028-cellmate-roulette-1.png" alt="#28 Cellmate Roulette">
-    </a>
-  </div>
-</div>
-
-
-
-<div style="text-align: center; margin-top: 3rem;">
-  <img src="logos/SCLOGO-vinnie-bars-1-min.png" alt="Landscape Logo" class="landscape-logo">
-</div>
-
-
-    
-  </main>
-
-  <footer>
-    &copy; 2026 Amadeo. All rights reserved.
-    <div>
-      <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
-    </div>
-  </footer>
-
-  <script>
-  document.querySelectorAll('.dropdown-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const wrapper = btn.parentElement;
-      const content = wrapper.querySelector('.comic-content');
-      const img = content.querySelector('img');
-
-      wrapper.classList.toggle('active');
-
-      // Lazy-load the image when expanding
-      if (img && !img.src) {
-        img.src = img.dataset.src;
-      }
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      analytics_storage: "denied"
     });
-  });
-</script>
+    gtag("js", new Date());
+    gtag("config", "G-ZVPXQR0PH9");
+  </script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="hero-header">
+      <div class="page-width header-inner" data-reveal>
+        <a class="brand-link" href="index.html" aria-label="Slamcaster home">
+          <img class="brand-logo" src="Sc-logo1-1.png" alt="Slamcaster Logo" />
+        </a>
+        <p class="tagline">Art &amp; Comics from a Voice Behind Bars</p>
+      </div>
+    </header>
 
-<script>
-  function toggleComic(titleElement) {
-    const wrapper = titleElement.parentElement;
-    wrapper.classList.toggle('open');
-  }
-</script>
-  
+    <div class="nav-shell">
+      <div class="page-width nav-inner">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>Menu</button>
+        <nav class="site-nav" id="site-nav" data-site-nav>
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="comics.html">Comics</a>
+          <a class="nav-link" href="donate.html">Donate</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <main class="page page-width">
+      <section class="page-hero hero-single" data-reveal>
+        <div class="hero-copy">
+          <p class="eyebrow">Archive</p>
+          <h1 class="page-title">Comics</h1>
+          <p class="page-intro">Browse the full Slamcaster archive. Search by number or title, expand any entry to read it here, or open the image in a new tab.</p>
+        </div>
+      </section>
+
+      <section class="comic-archive" data-comics-archive data-reveal>
+        <div class="archive-toolbar">
+          <label class="search-field" for="comic-search">
+            <span class="sr-only">Search comics</span>
+            <input id="comic-search" type="search" placeholder="Search by title or number" data-comic-search />
+          </label>
+          <span class="count-pill" data-comic-count>0 comics</span>
+          <div class="toolbar-actions">
+            <button class="button secondary small" type="button" data-expand-all>Expand All</button>
+            <button class="button secondary small" type="button" data-collapse-all>Collapse All</button>
+          </div>
+        </div>
+
+        <p class="empty-state" data-empty-state hidden>No comics match that search.</p>
+
+        <div class="comic-grid">
+          <article class="comic-card" data-title="#1 eating in prison">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#1 Eating in Prison</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC001-eating-in-prison-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC001-eating-in-prison-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC001-eating-in-prison-1-min.png" alt="#1 Eating in Prison" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#2 aaachoo!">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#2 Aaachoo!</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC002-aaachoo-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC002-aaachoo-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC002-aaachoo-1-min.png" alt="#2 Aaachoo!" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#3 welcome to slamcaster">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#3 Welcome to Slamcaster</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC003-welcome-to-slamcaster-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC003-welcome-to-slamcaster-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC003-welcome-to-slamcaster-1-min.png" alt="#3 Welcome to Slamcaster" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#4 job inteview">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#4 Job Inteview</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC004-job-interview-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC004-job-interview-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC004-job-interview-1-min.png" alt="#4 Job Inteview" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#5 smoke grenade">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#5 Smoke Grenade</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC005-smoke-grenade-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC005-smoke-grenade-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC005-smoke-grenade-1-min.png" alt="#5 Smoke Grenade" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#6 get the geek">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#6 Get the Geek</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC006-get-the-geek-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC006-get-the-geek-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC006-get-the-geek-1-min.png" alt="#6 Get the Geek" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#7 shoe jack">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#7 Shoe Jack</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC007-shoe-jack-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC007-shoe-jack-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC007-shoe-jack-1-min.png" alt="#7 Shoe Jack" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#8 find that paperclip">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#8 Find that Paperclip</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC008-find-that-paperclip-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC008-find-that-paperclip-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC008-find-that-paperclip-1-min.png" alt="#8 Find that Paperclip" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#9 clean your clock">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#9 Clean your Clock</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC009-clean-your-clock-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC009-clean-your-clock-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC009-clean-your-clock-1-min.png" alt="#9 Clean your Clock" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#10 no black hats">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#10 No Black Hats</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC010-no-black-hats-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC010-no-black-hats-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC010-no-black-hats-1-min.png" alt="#10 No Black Hats" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#11 denied">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#11 Denied</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC011-denied-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC011-denied-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC011-denied-1-min.png" alt="#11 Denied" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#12 inmates be crazy">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#12 Inmates be Crazy</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC012-inmates-be-crazy-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC012-inmates-be-crazy-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC012-inmates-be-crazy-1-min.png" alt="#12 Inmates be Crazy" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#13 pay raise">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#13 Pay Raise</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC013-pay-raise-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC013-pay-raise-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC013-pay-raise-1-min.png" alt="#13 Pay Raise" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#14 inmate 707">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#14 Inmate 707</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC014-inmate-707-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC014-inmate-707-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC014-inmate-707-1-min.png" alt="#14 Inmate 707" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#15 500 sheets of paper">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#15 500 Sheets of Paper</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC015-500-sheets-of-paper-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC015-500-sheets-of-paper-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC015-500-sheets-of-paper-1-min.png" alt="#15 500 Sheets of Paper" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#16 got the yips">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#16 Got the Yips</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC016-got-the-yips-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC016-got-the-yips-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC016-got-the-yips-1-min.png" alt="#16 Got the Yips" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#17 service dogs">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#17 Service Dogs</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC017-service-dogs-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC017-service-dogs-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC017-service-dogs-1-min.png" alt="#17 Service Dogs" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#18 no nudity in slamcaster">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#18 No Nudity in Slamcaster</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC018-no-nudity-in-slamcaster-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC018-no-nudity-in-slamcaster-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC018-no-nudity-in-slamcaster-1-min.png" alt="#18 No Nudity in Slamcaster" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#19 school is cancelled">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#19 School is Cancelled</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC019-school-is-cancelled-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC019-school-is-cancelled-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC019-school-is-cancelled-1-min.png" alt="#19 School is Cancelled" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#20 break is late">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#20 Break is Late</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC020-breakfast-is-late-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC020-breakfast-is-late-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC020-breakfast-is-late-1-min.png" alt="#20 Break is Late" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#21 darth vader">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#21 Darth Vader</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC021-darth-vader-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC021-darth-vader-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC021-darth-vader-1-min.png" alt="#21 Darth Vader" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#22 fast five">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#22 Fast Five</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC022-fast-five-1-min.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC022-fast-five-1-min.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC022-fast-five-1-min.png" alt="#22 Fast Five" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#23 the secret lives of lifers">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#23 The Secret Lives of Lifers</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC023-the-secret-lives-of-lifers-1.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC023-the-secret-lives-of-lifers-1.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC023-the-secret-lives-of-lifers-1.png" alt="#23 The Secret Lives of Lifers" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#24 half-a-minute to chow">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#24 Half-a-Minute to Chow</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC024-half-a-minute-to-chow-1.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC024-half-a-minute-to-chow-1.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC024-half-a-minute-to-chow-1.png" alt="#24 Half-a-Minute to Chow" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#25 slamcaster self help classes that didn&#39;t make the cut">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#25 Slamcaster Self Help Classes that Didn&#39;t Make the Cut</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC025-slamcaster-self-help-classes-that-didnt-make-the-cut-1.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC025-slamcaster-self-help-classes-that-didnt-make-the-cut-1.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC025-slamcaster-self-help-classes-that-didnt-make-the-cut-1.png" alt="#25 Slamcaster Self Help Classes that Didn&#39;t Make the Cut" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#26 canteen prices">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#26 Canteen Prices</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC026-canteen-prices-1.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC026-canteen-prices-1.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC026-canteen-prices-1.png" alt="#26 Canteen Prices" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#27 eating in the chow hall">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#27 Eating in the Chow Hall</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC027-eating-in-the-chow-hall-1.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC027-eating-in-the-chow-hall-1.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC027-eating-in-the-chow-hall-1.png" alt="#27 Eating in the Chow Hall" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="comic-card" data-title="#28 cellmate roulette">
+            <button class="comic-toggle" type="button" data-comic-toggle>
+              <span class="comic-name">#28 Cellmate Roulette</span>
+              <span class="comic-arrow">&#9654;</span>
+            </button>
+            <div class="comic-panel">
+              <div class="comic-panel-inner">
+                <div class="comic-panel-content">
+                  <div class="comic-actions">
+                    <span>Click the image for the full-size version.</span>
+                    <a href="comics/SC028-cellmate-roulette-1.png" target="_blank" rel="noopener noreferrer">Open full image</a>
+                  </div>
+                  <a class="comic-link" href="comics/SC028-cellmate-roulette-1.png" target="_blank" rel="noopener noreferrer">
+                    <img class="comic-image" src="comics/SC028-cellmate-roulette-1.png" alt="#28 Cellmate Roulette" loading="lazy" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="landscape-logo-frame" data-reveal>
+        <img src="logos/SCLOGO-vinnie-bars-1-min.png" alt="Landscape Logo" />
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-width footer-inner">
+        <p class="footer-copy">&copy; 2026 Vinnie Amadeo. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
-
 </html>
