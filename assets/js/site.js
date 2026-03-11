@@ -4,6 +4,7 @@
   markCurrentPage();
   initCookieBanner();
   initRevealAnimations();
+  initLegalAccordion();
   initTableOfContents();
   initComicsArchive();
 });
@@ -162,6 +163,136 @@ function initRevealAnimations() {
   items.forEach((item) => observer.observe(item));
 }
 
+function initLegalAccordion() {
+  document.querySelectorAll("[data-legal-accordion]").forEach((article) => {
+    const sections = Array.from(article.querySelectorAll(":scope > section"));
+
+    if (!sections.length) {
+      return;
+    }
+
+    const initialOpen = Number(article.getAttribute("data-legal-initial-open") || 1);
+    const toolbar = document.createElement("div");
+    toolbar.className = "legal-toolbar";
+    toolbar.innerHTML = `
+      <div class="legal-toolbar-main">
+        <p class="legal-toolbar-copy">Use the section list, search, or expand/collapse controls to read the Terms more comfortably.</p>
+        <label class="search-field legal-search" for="legal-search">
+          <span class="sr-only">Search terms of service sections</span>
+          <input id="legal-search" type="search" placeholder="Search sections or keywords" data-legal-search />
+        </label>
+      </div>
+      <div class="legal-toolbar-side">
+        <span class="count-pill legal-count" data-legal-count></span>
+        <div class="toolbar-actions legal-toolbar-actions">
+          <button class="button secondary small" type="button" data-legal-expand>Expand All</button>
+          <button class="button secondary small" type="button" data-legal-collapse>Collapse All</button>
+        </div>
+      </div>
+    `;
+
+    article.prepend(toolbar);
+
+    sections.forEach((section, index) => {
+      const primaryHeading = section.querySelector(":scope > h2, :scope > h3");
+      const title = primaryHeading ? primaryHeading.textContent.trim() : index === 0 ? "Overview" : `Section ${index + 1}`;
+      const level = primaryHeading ? primaryHeading.tagName.toLowerCase() : "h2";
+      const anchorId = primaryHeading && primaryHeading.id ? primaryHeading.id : slugify(title, index + 1);
+      const details = document.createElement("details");
+      const summary = document.createElement("summary");
+      const titleNode = document.createElement("span");
+      const metaNode = document.createElement("span");
+      const body = document.createElement("div");
+      const itemCount = section.querySelectorAll("p, li").length;
+
+      details.className = "legal-section";
+      details.open = index < initialOpen;
+      details.dataset.sectionTitle = title.toLowerCase();
+      details.dataset.sectionBody = section.textContent.toLowerCase();
+
+      summary.className = "legal-summary";
+
+      titleNode.className = "legal-summary-title";
+      titleNode.id = anchorId;
+      titleNode.dataset.tocLabel = "true";
+      titleNode.dataset.tocLevel = level;
+      titleNode.textContent = title;
+
+      metaNode.className = "legal-summary-meta";
+      metaNode.textContent = `${itemCount} item${itemCount === 1 ? "" : "s"}`;
+
+      summary.append(titleNode, metaNode);
+
+      body.className = "legal-section-body";
+      if (primaryHeading) {
+        primaryHeading.remove();
+      }
+      while (section.firstChild) {
+        body.append(section.firstChild);
+      }
+
+      details.append(summary, body);
+      section.replaceWith(details);
+    });
+
+    const cards = Array.from(article.querySelectorAll(".legal-section"));
+    const search = toolbar.querySelector("[data-legal-search]");
+    const count = toolbar.querySelector("[data-legal-count]");
+    const expand = toolbar.querySelector("[data-legal-expand]");
+    const collapse = toolbar.querySelector("[data-legal-collapse]");
+
+    const updateCount = () => {
+      const visible = cards.filter((card) => !card.hidden).length;
+      count.textContent = `${visible} section${visible === 1 ? "" : "s"}`;
+    };
+
+    const restoreDefaultState = () => {
+      cards.forEach((card, index) => {
+        if (!card.hidden) {
+          card.open = index < initialOpen;
+        }
+      });
+    };
+
+    search.addEventListener("input", () => {
+      const query = search.value.trim().toLowerCase();
+
+      cards.forEach((card, index) => {
+        const haystack = `${card.dataset.sectionTitle || ""} ${card.dataset.sectionBody || ""}`;
+        const matches = !query || haystack.includes(query);
+        card.hidden = !matches;
+
+        if (matches) {
+          card.open = query ? true : index < initialOpen;
+        } else {
+          card.open = false;
+        }
+      });
+
+      updateCount();
+    });
+
+    expand.addEventListener("click", () => {
+      cards.forEach((card) => {
+        if (!card.hidden) {
+          card.open = true;
+        }
+      });
+    });
+
+    collapse.addEventListener("click", () => {
+      cards.forEach((card) => {
+        if (!card.hidden) {
+          card.open = false;
+        }
+      });
+    });
+
+    updateCount();
+    restoreDefaultState();
+  });
+}
+
 function initTableOfContents() {
   document.querySelectorAll("[data-toc-root]").forEach((root) => {
     const list = root.querySelector("[data-toc]");
@@ -171,8 +302,11 @@ function initTableOfContents() {
       return;
     }
 
+    list.innerHTML = "";
+
     const levels = list.getAttribute("data-toc-levels") || "h2";
-    const headings = Array.from(content.querySelectorAll(levels));
+    const customLabels = Array.from(content.querySelectorAll("[data-toc-label]"));
+    const headings = customLabels.length ? customLabels : Array.from(content.querySelectorAll(levels));
 
     if (!headings.length) {
       const card = list.closest(".toc-card");
@@ -191,11 +325,25 @@ function initTableOfContents() {
       link.href = `#${heading.id}`;
       link.textContent = heading.textContent.trim();
 
-      if (heading.tagName === "H3") {
+      const level = heading.dataset.tocLevel || heading.tagName;
+      if (String(level).toUpperCase() === "H3") {
         link.classList.add("toc-sub");
       }
 
       list.appendChild(link);
+    });
+
+    list.addEventListener("click", (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) {
+        return;
+      }
+
+      const target = content.querySelector(link.getAttribute("href"));
+      const details = target ? target.closest("details") : null;
+      if (details) {
+        details.open = true;
+      }
     });
   });
 }
