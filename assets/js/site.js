@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("js-ready");
   initNavigation();
   markCurrentPage();
@@ -6,9 +6,9 @@
   initRevealAnimations();
   initLegalAccordion();
   initTableOfContents();
+  initComicsArchive();
   openHashTarget();
   window.addEventListener("hashchange", openHashTarget);
-  initComicsArchive();
 });
 
 function initNavigation() {
@@ -374,6 +374,18 @@ function openHashTarget() {
   if (details) {
     details.open = true;
   }
+
+  const comicCard = target.matches(".comic-card") ? target : target.closest(".comic-card");
+  if (comicCard) {
+    setComicOpenState(comicCard, true);
+  }
+
+  window.requestAnimationFrame(() => {
+    target.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start"
+    });
+  });
 }
 
 function initComicsArchive() {
@@ -470,5 +482,3 @@ function updateComicCount(countElement, total) {
 
   countElement.textContent = `${total} comic${total === 1 ? "" : "s"}`;
 }
-
-
