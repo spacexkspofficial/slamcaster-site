@@ -43,37 +43,33 @@
       </div>
     </div>
 
-    <main class="page page-width">
-      <section class="page-hero home-hero" data-reveal>
-        <div class="hero-copy home-hero-copy">
+    <main class="page">
+      <section class="page-hero home-hero">
+        <div class="home-hero-bg" data-parallax="0.35" style="background-image: url('logos/SCLOGO-vinnie-bars-1-min.png');"></div>
+        <div class="home-hero-overlay"></div>
+        <div class="home-hero-content" data-reveal>
           <p class="eyebrow">Independent Comic Archive</p>
           <h1 class="page-title">Slamcaster</h1>
           <p class="page-intro">Art &amp; Comics from a Voice Behind Bars.</p>
           <div class="hero-actions">
             <a class="button" href="comics.html">Browse Comics</a>
             <a class="button secondary" href="about.html">About Vinnie</a>
-            <a class="button secondary" href="donate.html">Support the Work</a>
           </div>
         </div>
-
-        <div class="hero-media home-hero-media">
-          <div class="hero-showcase">
-            <div class="hero-showcase-top">
-              <div class="hero-logo-frame hero-logo-frame-tall">
-                <img src="logos/SCLOGO-vinnie-mugshot-1-min.png" alt="Mugshot Logo" />
-              </div>
-              <div class="hero-logo-frame hero-logo-frame-offset">
-                <img src="logos/SCLOGO-warden-1-min.png" alt="Warden Logo" />
-              </div>
-            </div>
-            <div class="landscape-logo-frame hero-showcase-wide">
-              <img src="logos/SCLOGO-vinnie-bars-1-min.png" alt="Landscape Logo" />
-            </div>
-          </div>
-        </div>
+        <span class="home-hero-scroll" aria-hidden="true">Scroll</span>
       </section>
 
-      <section class="content-grid two-column-grid home-list-grid">
+      <div class="page-width">
+        <section class="home-identity" data-reveal aria-label="Slamcaster artwork">
+          <a class="home-identity-item" href="about.html" aria-label="About Vinnie">
+            <img src="logos/SCLOGO-vinnie-mugshot-1-min.png" alt="Mugshot Logo" loading="lazy" />
+          </a>
+          <a class="home-identity-item" href="donate.html" aria-label="Support the work">
+            <img src="logos/SCLOGO-warden-1-min.png" alt="Warden Logo" loading="lazy" />
+          </a>
+        </section>
+
+        <section class="content-grid two-column-grid home-list-grid">
         <article class="panel home-panel" data-reveal>
           <h2 class="panel-title">&#128226; Recent Releases [Jan 5, 2026]</h2>
           <ul class="release-list">
@@ -93,7 +89,8 @@
             <li><a class="release-link release-link-upcoming" href="comics.html#upcoming-colored-slamcaster-logo">Colored Slamcaster Logo</a></li>
           </ul>
         </article>
-      </section>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">

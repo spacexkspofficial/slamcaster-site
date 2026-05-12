@@ -4,12 +4,84 @@ document.addEventListener("DOMContentLoaded", () => {
   markCurrentPage();
   initCookieBanner();
   initRevealAnimations();
+  initParallax();
   initLegalAccordion();
   initTableOfContents();
   initComicsArchive();
   openHashTarget();
   window.addEventListener("hashchange", openHashTarget);
 });
+
+function initParallax() {
+  const layers = document.querySelectorAll("[data-parallax]");
+  if (!layers.length) {
+    return;
+  }
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const smallViewport = window.matchMedia("(max-width: 700px)");
+  const coarsePointer = window.matchMedia("(hover: none) and (pointer: coarse)");
+
+  const shouldDisable = () =>
+    reducedMotion.matches || smallViewport.matches || coarsePointer.matches;
+
+  let ticking = false;
+
+  const reset = () => {
+    layers.forEach((layer) => {
+      layer.style.transform = "";
+    });
+  };
+
+  const update = () => {
+    if (shouldDisable()) {
+      reset();
+      ticking = false;
+      return;
+    }
+
+    layers.forEach((layer) => {
+      const speed = parseFloat(layer.dataset.parallax) || 0.35;
+      const host = layer.parentElement;
+      if (!host) {
+        return;
+      }
+      const rect = host.getBoundingClientRect();
+      // Only animate while host is near the viewport — saves work off-screen.
+      if (rect.bottom < -200 || rect.top > window.innerHeight + 200) {
+        return;
+      }
+      const offset = (window.innerHeight / 2 - (rect.top + rect.height / 2)) * speed;
+      layer.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+    });
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+
+  const handlePrefChange = () => {
+    if (shouldDisable()) {
+      reset();
+    } else {
+      onScroll();
+    }
+  };
+
+  if (typeof reducedMotion.addEventListener === "function") {
+    reducedMotion.addEventListener("change", handlePrefChange);
+    smallViewport.addEventListener("change", handlePrefChange);
+  }
+
+  update();
+}
 
 function initNavigation() {
   const toggle = document.querySelector("[data-menu-toggle]");
