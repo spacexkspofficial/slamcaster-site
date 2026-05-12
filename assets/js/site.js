@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLegalAccordion();
   initTableOfContents();
   initComicsArchive();
+  initBehaviorTracking();
   openHashTarget();
   window.addEventListener("hashchange", openHashTarget);
 });
@@ -553,4 +554,288 @@ function updateComicCount(countElement, total) {
   }
 
   countElement.textContent = `${total} comic${total === 1 ? "" : "s"}`;
+}
+
+/*
+ * Visitor behavior tracking
+ * -------------------------
+ * Forwards interaction events to GA4 (gtag) which the site already loads.
+ * Consent Mode is configured on each page (denied by default, granted after
+ * the cookie banner Accept), so gtag handles privacy automatically: while
+ * consent is denied it sends cookieless pings; once granted, events get
+ * associated with a user/session.
+ *
+ * Events sent:
+ *   scroll_depth        { percent, page_path }              25/50/75/100
+ *   engagement_time     { seconds, page_path }              30/60/120/300/600
+ *   page_leave          { seconds, page_path }              on pagehide
+ *   nav_click           { destination, label }
+ *   mobile_menu_toggle  { state }                           open|close
+ *   cta_click           { location, label, destination }    hero | identity
+ *   release_click       { list, destination }               recent | upcoming
+ *   comic_open          { comic_id, comic_title }
+ *   comic_expand_all    {}
+ *   comic_collapse_all  {}
+ *   comic_full_image    { comic_id, comic_title }
+ *   search              { search_term, page_path }
+ *   legal_search        { search_term, page_path }
+ *   legal_section_open  { section_title }
+ *   toc_click           { section, href }
+ *   external_click      { url }
+ *   email_click         { address }
+ *   footer_link         { destination }
+ */
+function initBehaviorTracking() {
+  const send = (name, params) => {
+    if (typeof window.gtag !== "function") {
+      return;
+    }
+    try {
+      window.gtag("event", name, Object.assign({ page_path: location.pathname }, params || {}));
+    } catch (error) {
+      // Swallow tracking errors; analytics must never break the page.
+    }
+  };
+
+  const milestones = new Set();
+  const markOnce = (key) => {
+    if (milestones.has(key)) {
+      return false;
+    }
+    milestones.add(key);
+    return true;
+  };
+
+  initScrollDepth(send, markOnce);
+  initEngagementTime(send, markOnce);
+  initClickTracking(send);
+  initSearchTracking(send);
+}
+
+function initScrollDepth(send, markOnce) {
+  const targets = [25, 50, 75, 100];
+  let ticking = false;
+
+  const measure = () => {
+    ticking = false;
+    const doc = document.documentElement;
+    const scrollable = (doc.scrollHeight || 0) - window.innerHeight;
+    if (scrollable <= 0) {
+      // Page fits in viewport — count it as fully viewed.
+      if (markOnce("depth_100")) {
+        send("scroll_depth", { percent: 100 });
+      }
+      return;
+    }
+    const percent = Math.min(100, Math.round((window.scrollY / scrollable) * 100));
+    targets.forEach((threshold) => {
+      if (percent >= threshold && markOnce(`depth_${threshold}`)) {
+        send("scroll_depth", { percent: threshold });
+      }
+    });
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(measure);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+
+  measure();
+}
+
+function initEngagementTime(send, markOnce) {
+  const thresholds = [30, 60, 120, 300, 600];
+  let visibleSince = document.hidden ? null : Date.now();
+  let accumulated = 0;
+
+  const elapsedSeconds = () => {
+    const ongoing = visibleSince ? Date.now() - visibleSince : 0;
+    return Math.round((accumulated + ongoing) / 1000);
+  };
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (visibleSince) {
+        accumulated += Date.now() - visibleSince;
+        visibleSince = null;
+      }
+    } else if (!visibleSince) {
+      visibleSince = Date.now();
+    }
+  });
+
+  const tick = () => {
+    const seconds = elapsedSeconds();
+    thresholds.forEach((t) => {
+      if (seconds >= t && markOnce(`engaged_${t}`)) {
+        send("engagement_time", { seconds: t });
+      }
+    });
+  };
+
+  // Check engagement every 15s — light enough to be invisible, dense
+  // enough to catch the 30s/60s thresholds promptly.
+  window.setInterval(tick, 15000);
+
+  const reportLeave = () => {
+    if (markOnce("page_leave_sent")) {
+      send("page_leave", { seconds: elapsedSeconds() });
+    }
+  };
+
+  window.addEventListener("pagehide", reportLeave);
+  window.addEventListener("beforeunload", reportLeave);
+}
+
+function initClickTracking(send) {
+  // Use the capture phase so we observe element state *before* other
+  // handlers (comic toggle, menu toggle) flip classes.
+  document.addEventListener(
+    "click",
+    (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const navLink = target.closest(".nav-link");
+      if (navLink) {
+        send("nav_click", {
+          destination: navLink.getAttribute("href") || "",
+          label: textOf(navLink)
+        });
+      }
+
+      const menuToggle = target.closest("[data-menu-toggle]");
+      if (menuToggle) {
+        const nav = document.querySelector("[data-site-nav]");
+        const willOpen = !nav || !nav.classList.contains("is-open");
+        send("mobile_menu_toggle", { state: willOpen ? "open" : "close" });
+      }
+
+      const identityItem = target.closest(".home-identity-item");
+      if (identityItem) {
+        send("cta_click", {
+          location: "home_identity",
+          label: identityItem.getAttribute("aria-label") || "",
+          destination: identityItem.getAttribute("href") || ""
+        });
+      }
+
+      const ctaButton = target.closest(".hero-actions .button");
+      if (ctaButton) {
+        const inHomeHero = !!ctaButton.closest(".home-hero");
+        send("cta_click", {
+          location: inHomeHero ? "home_hero" : "page_hero",
+          label: textOf(ctaButton),
+          destination: ctaButton.getAttribute("href") || ""
+        });
+      }
+
+      const releaseLink = target.closest(".release-link");
+      if (releaseLink) {
+        send("release_click", {
+          list: releaseLink.classList.contains("release-link-upcoming") ? "upcoming" : "recent",
+          destination: releaseLink.getAttribute("href") || "",
+          label: textOf(releaseLink)
+        });
+      }
+
+      const comicToggle = target.closest("[data-comic-toggle]");
+      if (comicToggle) {
+        const card = comicToggle.closest(".comic-card");
+        // Pre-toggle state: classList is updated by the original handler later.
+        if (card && !card.classList.contains("is-open")) {
+          send("comic_open", {
+            comic_id: card.id || "",
+            comic_title: card.getAttribute("data-title") || textOf(card.querySelector(".comic-name"))
+          });
+        }
+      }
+
+      if (target.closest("[data-expand-all]")) {
+        send("comic_expand_all", {});
+      }
+      if (target.closest("[data-collapse-all]")) {
+        send("comic_collapse_all", {});
+      }
+
+      const fullImage = target.closest(".comic-panel-content a[target='_blank']");
+      if (fullImage) {
+        const card = fullImage.closest(".comic-card");
+        send("comic_full_image", {
+          comic_id: card ? card.id || "" : "",
+          comic_title: card ? card.getAttribute("data-title") || "" : "",
+          url: fullImage.getAttribute("href") || ""
+        });
+      }
+
+      const legalSummary = target.closest(".legal-summary");
+      if (legalSummary) {
+        const details = legalSummary.closest("details");
+        if (details && !details.open) {
+          const titleEl = legalSummary.querySelector(".legal-summary-title");
+          send("legal_section_open", { section_title: textOf(titleEl) });
+        }
+      }
+
+      const tocLink = target.closest(".toc-list a");
+      if (tocLink) {
+        send("toc_click", {
+          section: textOf(tocLink),
+          href: tocLink.getAttribute("href") || ""
+        });
+      }
+
+      const footerLink = target.closest(".footer-links a");
+      if (footerLink) {
+        send("footer_link", { destination: footerLink.getAttribute("href") || "" });
+      }
+
+      const anchor = target.closest("a[href]");
+      if (anchor) {
+        const href = anchor.getAttribute("href") || "";
+        if (href.startsWith("mailto:")) {
+          send("email_click", { address: href.replace(/^mailto:/, "") });
+        } else if (/^https?:/i.test(href) && !href.startsWith(location.origin)) {
+          // External link — captureOutboundLink already sends a legacy
+          // "outbound" event for the PayPal CTA. This adds a structured
+          // external_click event for every outbound anchor.
+          send("external_click", { url: href });
+        }
+      }
+    },
+    true
+  );
+}
+
+function initSearchTracking(send) {
+  const watch = (input, eventName) => {
+    let timer;
+    input.addEventListener("input", () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        const query = input.value.trim();
+        if (query.length >= 2) {
+          send(eventName, { search_term: query });
+        }
+      }, 800);
+    });
+  };
+
+  document.querySelectorAll("[data-comic-search]").forEach((input) => watch(input, "search"));
+  document.querySelectorAll("[data-legal-search]").forEach((input) => watch(input, "legal_search"));
+}
+
+function textOf(node) {
+  if (!node) {
+    return "";
+  }
+  return (node.textContent || "").trim().replace(/\s+/g, " ");
 }
