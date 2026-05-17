@@ -6,17 +6,15 @@
   <title>Donate - Slamcaster</title>
   <link rel="icon" type="image/png" href="logos/SCLOGO-PFP-1-min.png" />
   <link rel="stylesheet" href="assets/css/site.css" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPXQR0PH9"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag("consent", "default", {
-      ad_storage: "denied",
-      analytics_storage: "denied"
-    });
-    gtag("js", new Date());
-    gtag("config", "G-ZVPXQR0PH9");
-  </script>
+  <!--
+    Slamcaster Analytics (self-hosted, no third parties).
+    Update the URLs below to point at wherever your analytics server is reachable:
+      Local testing:   http://localhost:8787
+      Production:      https://analytics.slamcaster.com  (requires DNS + a running server)
+    Until the server is reachable, this tag is a no-op — the page is unaffected.
+  -->
+  <script async src="https://analytics.slamcaster.com/tracker.js"
+          data-endpoint="https://analytics.slamcaster.com/api/collect"></script>
   <script src="assets/js/site.js" defer></script>
 </head>
 <body>
