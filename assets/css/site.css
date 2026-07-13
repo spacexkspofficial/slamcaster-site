@@ -1047,6 +1047,31 @@ input {
   background: var(--surface);
 }
 
+.comic-transcript {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--paper-soft);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.comic-transcript summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.comic-transcript summary:hover {
+  color: var(--accent);
+}
+
+.comic-transcript p {
+  margin: 0.75rem 0 0;
+}
+
 .empty-state {
   margin: 0 0 1.5rem;
   color: var(--muted);
