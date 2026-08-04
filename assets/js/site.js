@@ -106,11 +106,16 @@ function initNavigation() {
 }
 
 function markCurrentPage() {
-  const current = window.location.pathname.split("/").pop() || "index.html";
+  const normalizePath = (path) => {
+    const withoutIndex = path.replace(/index\.html$/i, "");
+    const withoutTrailingSlash = withoutIndex.replace(/\/$/, "");
+    return withoutTrailingSlash || "/";
+  };
+  const current = normalizePath(window.location.pathname);
 
   document.querySelectorAll(".nav-link").forEach((link) => {
-    const href = link.getAttribute("href");
-    if (href === current || (current === "" && href === "index.html")) {
+    const target = normalizePath(new URL(link.href, window.location.href).pathname);
+    if (target === current) {
       link.setAttribute("aria-current", "page");
     }
   });
