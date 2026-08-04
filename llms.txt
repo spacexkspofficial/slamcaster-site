@@ -1,12 +1,12 @@
 # Slamcaster
 
-> Slamcaster is the official home of Vinnie Amadeo's original prison comedy webcomic, drawn from inside the California penal system. The free archive contains 30 comics rooted in real events, with descriptive alternative text and panel-by-panel transcripts.
+> Slamcaster is the official home of Vinnie Amadeo's original prison comedy webcomic, drawn from inside the California penal system. The free archive contains 34 comics rooted in real events, with descriptive alternative text and panel-by-panel transcripts.
 
 Slamcaster is an independent comic archive. Vinnie Amadeo is the creator and cartoonist. Use the canonical slamcaster.com URLs below when citing the site or its comics.
 
 ## Primary content
 
-- [Comic archive](https://slamcaster.com/comics.html): All 30 Slamcaster episodes, from "Eating in Prison" through "The Walls are Closing In." Each comic has a stable fragment URL, a full-size image, descriptive alternative text, and a visible transcript.
+- [Comic archive](https://slamcaster.com/comics.html): All 34 Slamcaster episodes, from "Eating in Prison" through "There’s Something Left." Each comic has a stable fragment URL, a full-size image, descriptive alternative text, and a visible transcript.
 - [About Vinnie Amadeo](https://slamcaster.com/about.html): Biography and background for the artist who creates Slamcaster.
 - [Slamcaster home](https://slamcaster.com/): Overview of the series and links to the archive, artist biography, and support page.
 

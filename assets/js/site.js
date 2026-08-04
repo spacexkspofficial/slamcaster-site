@@ -125,7 +125,6 @@ function initCookieBanner() {
   const choice = getStoredCookieChoice();
 
   if (choice) {
-    updateConsent(choice);
     return;
   }
 
@@ -133,14 +132,12 @@ function initCookieBanner() {
   banner.className = "cookie-banner";
   banner.innerHTML = `
     <p>
-      This site uses cookies for analytics and advertising. By continuing, you agree to our
-      <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-      and
-      <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>.
+      This site uses cookie-free, self-hosted analytics and local browser storage to remember
+      that you dismissed this notice. Learn more in our
+      <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
     </p>
     <div class="cookie-actions">
-      <button class="button" type="button" data-cookie-choice="accepted">Accept</button>
-      <button class="button secondary" type="button" data-cookie-choice="rejected">Reject</button>
+      <button class="button" type="button" data-cookie-choice="acknowledged">Got It</button>
     </div>
   `;
 
@@ -148,7 +145,6 @@ function initCookieBanner() {
     button.addEventListener("click", () => {
       const value = button.getAttribute("data-cookie-choice");
       setStoredCookieChoice(value);
-      updateConsent(value);
       banner.remove();
     });
   });
@@ -170,19 +166,6 @@ function setStoredCookieChoice(value) {
   } catch (error) {
     // Ignore localStorage failures.
   }
-}
-
-function updateConsent(choice) {
-  if (typeof window.gtag !== "function") {
-    return;
-  }
-
-  const storageValue = choice === "accepted" ? "granted" : "denied";
-
-  window.gtag("consent", "update", {
-    ad_storage: storageValue,
-    analytics_storage: storageValue
-  });
 }
 
 window.captureOutboundLink = function captureOutboundLink(url) {
